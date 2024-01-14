@@ -4,104 +4,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel
-    ="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css">
     <title>GreenSprout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@500&family=Montserrat:wght@100;500&display=swap');
     </style>
+
 </head>
 
-<!----- header----->
 
 <body>
-    <header class="header_container">
-        <img class="logo" src="./Screenshot 2024-01-03 at 22.00.57.png" alt="">
-        <nav>
-            <ul>
-                <li><a class="active" href="file:///Users/tiff/Desktop/RTT-125/307.2/webPage/index.html#home">Home</a>
-                </li>
-                <li><a href="file:///Users/tiff/Desktop/RTT-125/307.2/webPage/index.html#store">Store</a></li>
-                <li><a href="file:///Users/tiff/Desktop/RTT-125/307.2/webPage/index.html#about">About</a></li>
-                <li><a href="file:///Users/tiff/Desktop/RTT-125/307.2/webPage/index.html#blog">Blog</a></li>
-                <li><a href="file:///Users/tiff/Desktop/RTT-125/307.2/webPage/index.html#contact">Contact</a></li>
-            </ul>
+    <!----- Header----->
+    <header class="header_container container">
+
+        <!-- Login and shopping bag -->
+        <nav class="firstNav navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse d-flex justify-content-end ">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.html"><img src="./img/login.png">/Sign up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bag.html"><img src="./img/shoppingBag.png" alt="">Shopping Bag</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
-        <div>
-            <div>Login/Sign up</div>
-            <div>Shopping Bag</div>
-        </div>
 
+        <!-- Nav Bar -->
+
+        <nav class="secondNav navbar navbar-expand-lg   ">
+            <div class="container-fluid">
+                <a class="navbar-brand " href="index.html"><img class="logo" src="./img/logo.png" alt="Logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="store.html" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Store
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">New Arrive</a></li>
+                                <li><a class="dropdown-item" href="#">Air Plants</a></li>
+                                <li><a class="dropdown-item" href="#">Houseplants</a></li>
+                                <li><a class="dropdown-item" href="#">Succlent</a></li>
+                                <li><a class="dropdown-item" href="#">Pots & Accessories</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Plant Care</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
     </header>
-
 
     <!------main -------->
     <main>
-        <section class="intro">
-            <div class="intro-content">
-                <h1>Elevate Your Space: Nourish Life with Beautiful Plants</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus vero vel, molestiae
-                    expedita
-                    error
-                    quos. Obcaecati architecto omnis quis libero esse quos, nihil voluptates ducimus, cupiditate itaque
-                    laboriosam velit at.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus vero vel, molestiae
-                    expedita
-                    error
-                    quos. Obcaecati architecto omnis quis libero esse quos, nihil voluptates ducimus, cupiditate itaque
-                    laboriosam velit at.
-                </p>
-                <br>
+        <!-- Headline -->
+        <section class=" headline">
+            <div class=" container card mb-3 border border-white">
+                <div class="row g-0">
+                    <div class="row1_col1 col-md-5">
+                        <div class="card-body">
+                            <h1 class="card-title">Elevate Your Space: Nourish Life with Beautiful Plants</h1>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+                                reprehenderit, laudantium pariatur necessitatibus at fuga quia explicabo quae tenetur
+                                illum facilis dolore repellat enim repellendus quod? At tenetur maxime autem.Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit. Officia, facere distinctio! Facilis, esse
+                                sint quo voluptatibus alias cumque sunt cupiditate neque maiores praesentium porro
+                                ipsum. Beatae natus repellat dicta modi? Lorem ipsum, dolor sit amet consectetur
+                                adipisicing elit. Doloremque, assumenda ex odit doloribus aliquam ut, officia delectus
+                                nobis sunt libero, provident voluptatum beatae quis voluptates praesentium
+                                adipisci mollitia impedit voluptatem.</p>
 
-                <form class="promo">
-                    <label>
-                        Get $10 off on your first order
-                        <br>
-                        <input class="promoEmail" type="text" placeholder="Enter you email here">
-                        <input class="promoButton" type="button" value="Submit">
-                    </label>
-                </form>
+                            <!--  Subscribe Modal   -->
+                            <div class="Subscription">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-success " data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" data-bs-whatever="@mdo"
+                                    style=" font-family: 'Montserrat', sans-serif ">
+                                    Sign up for our newsletter and get $10 off
+                                </button>
+
+                                <!-- Modal  itself-->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                    Subscribe to Our Newsletter!
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close">
+                                                </button>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <p>
+                                                    <small>
+                                                        Subscribe to our newsletter and receive $10 off on first order
+                                                    </small>
+                                                </p>
+                                                <form>
+                                                    <div class="mb-2">
+                                                        <input type="text" class="form-control" id="recipient-name"
+                                                            placeholder="You email">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success"
+                                                    data-bs-dismiss="modal">SUBSCRIBE</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row1_col2 col-md-7 d-none d-md-block">
+                        <img src="./img/placeWithPlants.jpg" class="img-fluid rounded-start " alt="...">
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="intro-image">
-                <img src="./monstera-plant-green-home.jpg" alt="">
+        <!-- Selling point-->
+        <section class="selling-point ">
+            <div class=" container text-center">
+                <h4 style="background-color:rgba(76, 175, 80, 0.1);">Why Choose Us?</h4>
+                <span><small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis est fugit in at
+                        doloribus eveniet rerum, vero quae beatae, odio nemo adipisci necessitatibus ut unde, pariatur
+                        sapiente eos nostrum repudiandae.</small></span>
+                <div class="row">
+                    <div class="col">
+                        <img src="./img/badge.png" alt="Top Quality">
+                        <p>Top Quality</p>
+                        <span><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. At quia dolore doloribus
+                                sunt,eniam debitis placeat esse neque maxime aliquid commodi reprehenderit.
+                            </small></span>
+                    </div>
+                    <div class="col">
+                        <img src="./img/reliable.png" alt="Reliable">
+                        <p>Reliable</p>
+                        <span><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. At quia dolore doloribus
+                                sunt,eniam debitis placeat esse neque maxime aliquid commodi reprehenderit.
+                            </small></span>
+                    </div>
+                    <div class="col">
+                        <img src="./img/fast-delivery.png" alt="Fast Delivery">
+                        <p>Fast Delivery</p>
+                        <span><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. At quia dolore doloribus
+                                sunt,eniam debitis placeat esse neque maxime aliquid commodi reprehenderit.
+                            </small></span>
+                    </div>
+                </div>
             </div>
         </section>
 
 
-        <section class="about">
-            <h1>Why Choose Us?</h1>
-            <div class="about-content">
-                <div>
-                    <img src="./badge.png" alt="">
-                    <p>Top Quality</p>
-                </div>
-                <div>
-                    <img src="./reliability.png" alt="">
-                    <p>Reliable</p>
-                </div>
-                <div>
-                    <img src="./fast-delivery.png" alt="">
-                    <p>Fast Delivery</p>
+        <!-- Top selling plants -->
+        <section class="topPlant ">
+            <div class="container text-center">
+                <h4 style="background-color:rgba(76, 175, 80, 0.1);">Top Selling Plants</h4>
+                <span><small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis est fugit in at
+                        doloribus
+                        eveniet rerum, vero quae beatae, odio nemo adipisci necessitatibus ut unde, pariatur sapiente
+                        eos
+                        nostrum repudiandae.</small></span>
+                <!-- big screen carousel-->
+                <div id="carouselExampleAutoplaying" class="bigScreen carousel slide d-none d-sm-block carousel-dark"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- First card slid -->
+                        <div class="carousel-item active ">
+                            <div class="cards-wrapper ">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="./img/plant1.jpg" alt="...">
+                                        <h6 class="card-title">String of Heart</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <img src="./img/plant2.jpg" alt="...">
+                                        <h6 class="card-title">Plant Trio</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <img src="./img/plant3.jpg" alt="...">
+                                        <h6 class="card-title">Monstera</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Second card slid -->
+                        <div class="carousel-item ">
+                            <div class="cards-wrapper ">
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <img src="./img/plant4.jpg" alt="...">
+                                        <h6 class="card-title">Phthos Plant</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="./img/plant5.jpg" alt="...">
+                                        <h6 class="card-title">Plant Trio</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="./img/plant6.jpg" alt="...">
+                                        <h6 class="card-title">Snake Plant</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Third card slid -->
+                        <div class="carousel-item">
+                            <div class="cards-wrapper">
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <img src="./img/plant7.jpg" alt="...">
+                                        <h6 class="card-title">Phthos</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="./img/plant8.jpg" alt="...">
+                                        <h6 class="card-title">Bird of Paradise</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <img src="./img/plant9.jpg" alt="...">
+                                        <h6 class="card-title">Aloe</h6>
+                                        <p class="card-text"><small>Lorem ipsum dolor sit amet consectetur
+                                                adipisicing</small></p>
+                                        <a href="#" class="btn btn-success">Add to bag</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
-        </section>
 
-        <section class="topPlant">
-            <h1>Top Selling Plants</h1>
-            <div class="top-content">
-                <img src="plant1.webp" alt="">
-                <img src="plant2.webp" alt="">
-                <img src="plant3.webp" alt="">
-                <img src="plant4.webp" alt="">
-                <img src="plant5.webp" alt="">
+            <!-- small screen carousel-->
+            <div id="carouselExampleAutoplayingSmallScreen" class="smallScreen carousel slide d-sm-none carousel-dark"
+                data-bs-ride="carousel ">
+                <div class="carousel-inner text-center">
+                    <div class="carousel-item active ">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="./img/plant1.jpg" alt="...">
+                                <h5 class="card-title">String of Heart</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant2.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant3.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant4.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant5.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant6.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant7.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant8.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card ">
+                            <div class="card-body">
+                                <img src="./img/plant9.jpg" alt="...">
+                                <h5 class="card-title">Plant Trio</h5>
+                                <small class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit.</small>
+                                <a href="#" class="btn btn-success">Add to bag</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExampleAutoplayingSmallScreen" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExampleAutoplayingSmallScreen" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </section>
 
     </main>
     <!-- footer -->
     <footer>
-        <div class="footer-container"></div>
+        <div class="footer-container container text-centern d-flex">
+            <div class="row col-5">
+                <div class="col">
+                    Shopping
+                   <div>row</div>
+                   <div>row</div>
+                   <div>row</div>
+                </div>
+                <div class="col">
+                    Shopping
+                    <div>row</div>
+                    <div>row</div>
+                    <div>row</div>
+                </div>
+                <div class="col">
+                    Shopping
+                    <div>row</div>
+                    <div>row</div>
+                    <div>row</div>
+                </div>
+            </div>
+            <div class="row col-7" >
+                <div class="container row">
+                    <div class="col">
+                        <div>sign up email</div>
+                        <div>sign up email</div>
+                        <div>sign up email</div>
+                    </div>
+
+                </div>
+            </div>
     </footer>
 
 </body>
