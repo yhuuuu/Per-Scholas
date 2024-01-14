@@ -20,7 +20,7 @@
 
 <body>
     <!----- Header----->
-    <header class="header_container container">
+    <header class="header_container container-fluid">
 
         <!-- Login and shopping bag -->
         <nav class="firstNav navbar navbar-expand-lg navbar-light">
@@ -82,7 +82,7 @@
     <main>
         <!-- Headline -->
         <section class=" headline">
-            <div class=" container card mb-3 border border-white">
+            <div class=" container-fluid card mb-3 border border-white">
                 <div class="row g-0">
                     <div class="row1_col1 col-md-5">
                         <div class="card-body">
@@ -151,12 +151,13 @@
         </section>
 
         <!-- Selling point-->
-        <section class="selling-point ">
+        <section class="selling-point text-center">
+            <h4 style="background-color:rgba(76, 175, 80, 0.1);">Why Choose Us?</h4>
+            <span><small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis est fugit in at
+                    doloribus eveniet rerum, vero quae beatae, odio nemo adipisci necessitatibus ut unde, pariatur
+                    sapiente eos nostrum repudiandae.</small></span>
             <div class=" container text-center">
-                <h4 style="background-color:rgba(76, 175, 80, 0.1);">Why Choose Us?</h4>
-                <span><small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis est fugit in at
-                        doloribus eveniet rerum, vero quae beatae, odio nemo adipisci necessitatibus ut unde, pariatur
-                        sapiente eos nostrum repudiandae.</small></span>
+
                 <div class="row">
                     <div class="col">
                         <img src="./img/badge.png" alt="Top Quality">
@@ -185,16 +186,17 @@
 
 
         <!-- Top selling plants -->
-        <section class="topPlant ">
-            <div class="container text-center">
-                <h4 style="background-color:rgba(76, 175, 80, 0.1);">Top Selling Plants</h4>
+        <section class="topPlant text-center">
+            <h4 style="background-color:rgba(76, 175, 80, 0.1);">Top Selling Plants</h4>
                 <span><small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis est fugit in at
                         doloribus
                         eveniet rerum, vero quae beatae, odio nemo adipisci necessitatibus ut unde, pariatur sapiente
                         eos
                         nostrum repudiandae.</small></span>
+            <div class="container text-center">
+                
                 <!-- big screen carousel-->
-                <div id="carouselExampleAutoplaying" class="bigScreen carousel slide d-none d-sm-block carousel-dark"
+                <div id="carouselExampleAutoplaying" class="bigScreen carousel slide d-none d-md-block carousel-dark"
                     data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <!-- First card slid -->
@@ -308,7 +310,7 @@
             </div>
 
             <!-- small screen carousel-->
-            <div id="carouselExampleAutoplayingSmallScreen" class="smallScreen carousel slide d-sm-none carousel-dark"
+            <div id="carouselExampleAutoplayingSmallScreen" class="smallScreen carousel slide d-md-none carousel-dark"
                 data-bs-ride="carousel ">
                 <div class="carousel-inner text-center">
                     <div class="carousel-item active ">
@@ -427,37 +429,50 @@
     </main>
     <!-- footer -->
     <footer>
-        <div class="footer-container container text-centern d-flex">
-            <div class="row col-5">
-                <div class="col">
-                    Shopping
-                   <div>row</div>
-                   <div>row</div>
-                   <div>row</div>
-                </div>
-                <div class="col">
-                    Shopping
-                    <div>row</div>
-                    <div>row</div>
-                    <div>row</div>
-                </div>
-                <div class="col">
-                    Shopping
-                    <div>row</div>
-                    <div>row</div>
-                    <div>row</div>
-                </div>
-            </div>
-            <div class="row col-7" >
-                <div class="container row">
+        <div class="footer-container container-fluid text-centern ">
+            <div class="row">
+                <div class=" row col-8">
                     <div class="col">
-                        <div>sign up email</div>
-                        <div>sign up email</div>
-                        <div>sign up email</div>
+                        <h6>Customer Service</h6>
+                        <a class="nav-link" href="#">FAQ</a>
+                        <a class="nav-link" href="#">Shipping & Handling</a>
+                        <a class="nav-link" href="#">30-Day Guarantee</a>
+                    </div>
+                    <div class="col">
+                        <h6>Resources</h6>
+                        <a class="nav-link" href="#">Find Your Plant</a>
+                        <a class="nav-link" href="#">Plant Care Library</a>
+                        <a class="nav-link" href="#">Free Online Course</a>
+                    </div>
+                    <div class="col">
+                        <h6>My GreenSprout</h6>
+                        <a class="nav-link" href="#">My Account</a>
+                        <a class="nav-link" href="#">Track My Order</a>
+                        <a class="nav-link" href="#">Return Portal</a>
                     </div>
 
                 </div>
+
+                <div class=" col-4">
+                    <h4>Get the Dirt</h4>
+                    <div>
+                        Get plant care tips, exclusive offers, & event invites straight to your inbox. No spam, ever.
+                    </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter your email here...">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+
             </div>
+        </div>
     </footer>
 
 </body>

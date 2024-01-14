@@ -3,6 +3,7 @@
     margin: 0;
 }
 
+
 .logo {
     width: 100%;
     height: 10vh;
@@ -13,7 +14,8 @@
     margin: 0 5px;
     
 }
- nav{
+ nav,
+ .footer-container{
     background-color: rgba(251, 248, 248, 0.251);
  }
 .navbar-nav a:hover {
@@ -29,10 +31,11 @@ nav li {
 
 .headline img {
     object-fit: cover;
-    width: auto;
+    
     height: 100%;
+    
     padding: 20px 0;
-    object-position: -4% ; 
+    object-position: -1% ; 
 }
 
 
@@ -57,7 +60,8 @@ nav li {
    
 }
 
-.selling-point {
+.selling-point,
+.topPlant {
     padding: 20px;
 }
 
@@ -74,15 +78,12 @@ nav li {
     margin-top: 20px;
 }
 
-.selling-point span {
+.selling-point span{
     margin: 20px;
     font-family: 'Montserrat', sans-serif;
     color: #919090;
 }
 
-.topPlant {
-    padding: 20px 0;
-}
 
 .topPlant .cards-wrapper {
     display: flex;
@@ -91,7 +92,8 @@ nav li {
 
 .topPlant h4,
 .topPlant h5,
-.topPlant h6 {
+.topPlant h6 ,
+.footer-container h4{
     font-family: 'Kalnia', serif;
 }
 
@@ -126,12 +128,17 @@ nav li {
 padding: 30px 0;
 }
 
-.footer-container {
-    background-color: #fafafa;
-    height: 150px;
-}
 .carousel {
     padding: 0 20px;
+}
+
+.footer-container {
+    padding: 40px;
+    margin: 20px;
+}
+
+.footer-container a{
+    color: #919090;
 }
 
 
