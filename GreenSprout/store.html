@@ -1,11 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@500&family=Montserrat:wght@100;500&display=swap');
+    </style>
 </head>
+
 <body>
-    Store
+    <!----- Header----->
+    <header class="header_container container-fluid">
+
+        <!-- Login and shopping bag -->
+        <nav class="firstNav navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse d-flex justify-content-end ">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.html"><img src="./img/login.png">/Sign up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bag.html"><img src="./img/shoppingBag.png" alt="">Shopping Bag</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Nav Bar -->
+
+        <nav class="secondNav navbar navbar-expand-lg   ">
+            <div class="container-fluid">
+                <a class="navbar-brand " href="index.html"><img class="logo" src="./img/logo.png" alt="Logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="store.html" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Store
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="store.html">New Arrive</a></li>
+                                <li><a class="dropdown-item" href="store.html">Air Plants</a></li>
+                                <li><a class="dropdown-item" href="store.html">Houseplants</a></li>
+                                <li><a class="dropdown-item" href="store.html">Succlent</a></li>
+                                <li><a class="dropdown-item" href="store.html">Pots & Accessories</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Plant Care</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </header>
+    <!-- Main -->
+    <div class="container" style="height: 500px;background-color: rgba(76, 175, 80, 0.1)">
+        shopping Page
+    </div>
+    <!-- footer -->
+    <footer>
+        <div class="footer-container container-fluid text-centern ">
+            <div class="row">
+                <div class=" row col-8">
+                    <div class="col">
+                        <h6>Customer Service</h6>
+                        <a class="nav-link" href="#">FAQ</a>
+                        <a class="nav-link" href="#">Shipping & Handling</a>
+                        <a class="nav-link" href="#">30-Day Guarantee</a>
+                    </div>
+                    <div class="col">
+                        <h6>Resources</h6>
+                        <a class="nav-link" href="#">Find Your Plant</a>
+                        <a class="nav-link" href="#">Plant Care Library</a>
+                        <a class="nav-link" href="#">Free Online Course</a>
+                    </div>
+                    <div class="col">
+                        <h6>My GreenSprout</h6>
+                        <a class="nav-link" href="#">My Account</a>
+                        <a class="nav-link" href="#">Track My Order</a>
+                        <a class="nav-link" href="#">Return Portal</a>
+                    </div>
+
+                </div>
+
+                <div class=" col-4">
+                    <h4>Get the Dirt</h4>
+                    <div>
+                        Get plant care tips, exclusive offers, & event invites straight to your inbox. No spam, ever.
+                    </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter your email here...">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>

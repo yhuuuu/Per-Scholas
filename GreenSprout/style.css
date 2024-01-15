@@ -74,8 +74,12 @@ nav li {
 
 .selling-point img {
     border: none;
- 
     margin-top: 20px;
+    transition-property:width;
+    transition-duration: 2s;
+}
+.selling-point img:hover{
+   width: 110px;
 }
 
 .selling-point span{
