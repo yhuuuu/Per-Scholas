@@ -4,6 +4,8 @@
 
 Welcome to greenSprout, your one-stop destination for buying beautiful plants directly from our greenhouse. Explore a variety of plants, learn about plant care, and soon, enjoy the feature to trade and swap your plants with fellow enthusiasts.
 
+This project includes HTML, CSS and Bootstrap (Bootstrap is automatically fetched at [index.html](https://github.com/yhuuuu/Per-Scholas/blob/26081b85ca2fb585b793e7ec635c71ccedea5a3e/GreenSprout/index.html#L9C1-L13C42)).
+
 ## Features
 
 - **Plant Shopping:** Browse and purchase a diverse selection of plants from our greenhouse.
