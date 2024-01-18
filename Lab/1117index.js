@@ -1,139 +1,59 @@
-// // Count sown deom 10 to 1
-// for(let i = 10; i>0; i--){
-//     // console.log(i)
-// }
-
-// //Output add numbers from 1 to 10 
-// for (let i = 1;i<10; i+=2){
-//     // if(i%2 !==0){
-//     //     console.log(i)
-//     // }
-// // console.log(i)
-// }
-
-
-// //Output even numbers from 1 to 10 
-// for (let i = 0;i<=10; i+=2){
-// //console.log(i)
-// }
-
-// //Output mutiples of 3, starting at 6 and ending at 60
-
-// for(let i = 6; i <=60; i+=3)
-// console.log(i)
-
-// //Output an increasing numbr of # from 1 to 7
-// let sym = "#"
-
-// for(let i = 0; i<7; i++){
-//     console.log(sym)
-//     sym+='#'
-// }
-
-//write for look iterates from 1 to 20. The loop should:
-//Print "prime" for all prime number
-//Print "even" for all prime number
-//Print "odd" for all prime number
-//Treat 2 as an even number and 1&3 as odd, rather than prime
-
-// for(let i = 1; i<=20; i++ ){
-//     if(i ==1){
-//         console.log(`${i} is odd`)
-//     }
-//     else if(1%2 ===0){
-//         console.log(`${i} is even`)
-//     }else if (1%3!==0 && i%2 !==0){
-//         console.log(`${i} is Prime`)
-//     }else{
-//         console.log(`${i} is odd`)
-//     }
-// }
-
-
-
-// Write while loops to accomplish the following tasks:
-
-// Count down to 0 from a given number.
-// let x = 10
-
-// while (x>=0){
-//     console.log(x)
-//     x--;
-// }
-// Log integers in multiples of 3 as long as they are less than 35.
-// let num = 5
-// while (num<=35){
-
-//     if (num%3===0){
-//         console.log(num)
-//     }
-//     num++
-// }
-// Print integers in multiples of 5 as long as they are less than 100.
-
-// let num =0
-// while (num<100){
-
-//     if (num%5===0){
-//         console.log(num)
-//     }
-// num++
-// }
-// Print integers between 0 and 20 with the following conditions:
-
-// All numbers divisible by 2 should be multiplied by 3 before they are output.
-// All other integers should not be output.
-
-// let num = 1
-// //while num is less than 20
-// while (num < 20) {
-//     // console.log(num)
-
-//     //if num is divisible by 2
-//     if (num % 2 === 0) {
-//         console.log(num,num*3)
-//     }
-//     //Iterate num +1
-//     num++
-
-//     //num+2
-// }
-
-// Print all prime numbers between 0 and 20.
-// let num = 1
-
-// while(num < 20){
-//     if(num%2 !==0 && num%3 !==0){
-//         console.log(`${i} is prime number`)    
-//     }
-//     num++
-// }
-
-
-//Romeo went to the vending machine to buy himself a cookie, which costs $4. 
-//He paid with a $10 bill, and the vending machine gave him his change in quarters.
-//Write a loop that outputs how many quarters Romeo received.
-
-// let totalMoney = 10
-// let cookie = 4
-// let change = 0
-// let remainder = totalMoney-cookie
-
-// while(remainder >0){
-//     change += 4;
-//     remainder --;
-// }
-// console.log(change)
-
-
-
-let sum = 0;
-
-for (let i = 0; i < 5; i++) {
-
-  if (i % 2 === 0) continue;
-
-   sum += i;
- 
+// // Part 1: Fizz Buzz
+let num = 100
+// Loop through all numbers from 1 to 100.
+for(i=1; i<=num ;i ++){
+    // If a number is divisible by 3, log “Fizz.”
+    if(i%3===0 && i%5===0){
+        console.log(`${i},Fizz Buzz`)
+    }
+    // If a number is divisible by 5, log “Buzz.”
+    else if(i%5===0){
+        console.log(`${i},Buzz`)
+    }
+   // If a number is divisible by both 3 and 5, log “Fizz Buzz.”
+    else if(i%3===0){
+        console.log(`${i},Fizz`)
+    }
+    // If a number is not divisible by either 3 or 5, log the number.
+    else{
+        console.log(`${i}`)
+    }
 }
-console.log(sum)
+// //Part 2: Prime Time
+// Write a script that accomplishes the following:
+// Declare an arbitrary number, n.
+
+// Create a loop that searches for the next prime number, starting at n and incrementing from there.
+
+let n = 38
+while (true) {
+    let isPrime = true;
+    for (let i = 2; i <= n/2; i++) {
+        if (n % i === 0) {
+            isPrime = false;
+            break;
+        }
+    }
+    if (isPrime && n > 1) {
+        console.log(`For n=${n}, the next prime number is: ${n}`);
+        break;
+    }
+    n++;
+}
+
+//Part 3: Feeling Loopy
+
+// Loop through the characters of a given CSV string.
+// Store each “cell” of data in a variable.
+// When you encounter a comma, move to the next cell.
+// When you encounter the “\r\n” sequence, move to the next “row.”
+// Log each row of data.
+// You do not need to format the data, the following works well.
+// console.log(cell1, cell2, cell3, cell4);
+
+// let str = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26"
+
+
+
+
+
