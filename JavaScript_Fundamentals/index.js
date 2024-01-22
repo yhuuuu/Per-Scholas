@@ -82,27 +82,50 @@ const LearnerSubmissions = [
 // console.log(AssignmentGroup.assignments[0].points_possible)
 // console.log(LearnerSubmissions[0].submission['score'])
 //   console.log(LearnerSubmissions)
+console.log("-------------")
 
 
 
 let totalNumOfAssignment = AssignmentGroup.assignments.length
+let totoalNumOfStudent = LearnerSubmissions.length
 
-// Calculate each assignment sore 
-function eachAssignmentSore() {
-    let percentageScores = [];
+
+// Calculate Score
+function calculateScore(assignmentScore, assignmentTotalScore) {
+    return (assignmentScore / assignmentTotalScore)
+}
+// // Calculate each assignment sore 
+// function eachAssignmentSore() {
+//     let percentageScores = [];
+
+//     for (currentAssignment = 0; currentAssignment < totalNumOfAssignment; currentAssignment++) {
+
+//         let assignmentScore = LearnerSubmissions[currentAssignment].submission['score']
+//         let assignmentTotalScore = AssignmentGroup.assignments[currentAssignment].points_possible
+//         let percentage = (assignmentScore / assignmentTotalScore)
+
+//         percentageScores.push(percentage)
+
+//     }
+//     return percentageScores;
+// }
+// console.log(eachAssignmentSore())
+
+
+
+for (let currentStudent = 0; currentStudent < totoalNumOfStudent; currentStudent++) {
 
     for (currentAssignment = 0; currentAssignment < totalNumOfAssignment; currentAssignment++) {
         let assignmentScore = LearnerSubmissions[currentAssignment].submission['score']
         let assignmentTotalScore = AssignmentGroup.assignments[currentAssignment].points_possible
 
-        let percentage = (assignmentScore / assignmentTotalScore)
-        percentageScores.push(percentage)
+        let percentage = calculateScore(assignmentScore, assignmentTotalScore);
+        console.log(`Student ID ${LearnerSubmissions[currentStudent].learner_id}, Assignment ID ${AssignmentGroup.assignments[currentAssignment].id}, Percentage Score: ${percentage}`);
 
     }
-    return percentageScores;
+
 }
 
-console.log(eachAssignmentSore())
 
 
 function getLearnerData(course, ag, submissions) {
@@ -125,6 +148,6 @@ function getLearnerData(course, ag, submissions) {
     // return result;
 }
 
-const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+// const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
-console.log(result);
+// console.log(result);
