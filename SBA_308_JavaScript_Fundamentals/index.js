@@ -78,19 +78,39 @@ const LearnerSubmissions = [
 
 // Find out how many student in the data
 let studentsArray = [];
-
+// Loop for student submission information
 for (let submission of LearnerSubmissions) {
-    //It takes an individual student object from the array and checks if its id property is equal to submission.learner_id
-    //This variable is assigned the first element in studentsArray that satisfies the condition specified in the callback.
-    // To find an existing student in studentsArray whose id matches submission.learner_id. If such a student is found, existingStudent will be assigned the matching student object; otherwise, it will be undefined.
+
+    // To find an existing student in studentsArray whose id matches submission.learner_id. 
+    
     let existingStudent = studentsArray.find(stu => stu.id === submission.learner_id)
-    console.log(existingStudent)
+
+    // If the student is not exist, it will add the student
     if (!existingStudent) {
         studentsArray.push({ id: submission.learner_id });
     }
+
+}
+console.log("Student sumbitted the assignment:", studentsArray);
+
+let studentsGrades = {}
+// Loop for each submission assignment 
+
+
+for (i = 0; i < studentsArray.length; i++) {
+    studentsGrades[studentsArray[i].id] = []
+    for (let key in LearnerSubmissions) {
+        //If such a student is found, student will be assigned the matching student object based on student.id;
+        if (LearnerSubmissions[key].learner_id === studentsArray[i].id) {
+            studentsGrades[studentsArray[i].id].push(LearnerSubmissions[key])
+        }
+    }
 }
 
-console.log(studentsArray);
+console.log(studentsGrades)
+//console.log(JSON.stringify(studentsGrades, null, 2));
+
+
 
 
 function getLearnerData(course, ag, submissions) {
