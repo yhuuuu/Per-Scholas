@@ -158,12 +158,23 @@ function getScores(learner_id, submissions, ag) {
  * 4. get the possible earn score  
  */
 function getScoreTotal(ag, assignment_id) {
-    for (const assignment of ag.assignments) {
-        if (assignment.id == assignment_id) {
-            return assignment.points_possible
+    //assignment_id = ''
+    try {
+        //Validate assignment_is
+        if(!assignment_id){
+            throw new Error("Assignment id is empty")
+        }
+
+        for (const assignment of ag.assignments) {
+            if (assignment.id == assignment_id) {
+                return assignment.points_possible
+            }
         }
     }
-
+    catch(err){
+        console.log("Error: ", err.message)
+        return null;
+    }
 }
 
 /**
@@ -180,8 +191,7 @@ function getAssignmentDue(ag, assignment_id) {
 
 
 /**
- * 
- *  6. Get verage
+ *  6. Get average
  */
 function getAveage(scores) {
 
@@ -195,7 +205,6 @@ function getAveage(scores) {
 
     return avg
 }
-
 
 
 
@@ -223,7 +232,7 @@ function getLearnerData(course, ag, submissions) {
 
     //console.log(getAllLearner(submissions))
     const learners = getAllLearner(submissions)
-
+;
     for (const learner of learners) {
         // {id: 123}
         const scores = getScores(learner.id, submissions, ag)
@@ -251,4 +260,5 @@ function getLearnerData(course, ag, submissions) {
 
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
-console.log(result);
+//console.log(result);
+result.forEach((element)=> console.log(element))
