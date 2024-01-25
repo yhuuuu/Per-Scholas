@@ -121,17 +121,26 @@ function learnerExists(learners, currLearnerId) {
 function getScores(learner_id, submissions, ag) {
     const scores = [];
     for (const submission of submissions) {
+
         if (submission.learner_id == learner_id) {
-        // if past due date?
-                const assignment_id = submission.assignment_id;
-                const score = submission.submission.score;
-                const total = getScoreTotal(ag, assignment_id)
-                const smDueDate = submission.submission.submitted_at
+            // if (isAssignmentDue(ag, submission)) {
+            const assignment_id = submission.assignment_id;
+            const score = submission.submission.score;
+            const total = getScoreTotal(ag, assignment_id)
+            const submittedDate = submission.submission.submitted_at
+            const dueDate = getAssignmentDue(ag, assignment_id)
+            const x = new Date(submittedDate)
+            const y = new Date(dueDate)
+            const today = new Date()
 
-                scores.push({ learner_id: learner_id, assignment_id: assignment_id, score: score, total: total, DueDate: smDueDate })
-            
-
+            //only output grades that is due
+            if (x <= y && y < today) {
+                scores.push({
+                    learner_id: learner_id, assignment_id: assignment_id, score: score, total: total
+                })
+            }
         }
+
     }
     return scores;
 }
@@ -149,28 +158,37 @@ function getScoreTotal(ag, assignment_id) {
     }
 
 }
+
 /**
  * 
- *  5.Only count grades that is due
+ *  
+ *  5. return assignment due date
+ * 
  */
+function getAssignmentDue(ag, assignment_id) {
+    for (const assignmentDueDate of ag.assignments) {
+        if (assignmentDueDate.id == assignment_id) {
+            return assignmentDueDate.due_at
+        }
+    }
+}
 
-// function pastDue(ag, submission) {
-//     if (ag > submission) {
+
+
+
+// Check if the assignment is due (due date is in the future, and submission date is in the past)
+//     if (dueDate >= submissionDate) {
 //         return true
 //     }
-//     return false
+
 // }
 
-function getAssignmentDueDate(ag){
-    let x = []
-    for(const dueDate of ag.assignments){
-        //return dueDate.due_at
-        x.push({ duedate: dueDate.due_at })
-    }
-    return x
-    
-}
-console.log(getAssignmentDueDate(AssignmentGroup))
+// Return false if there is no submission for the assignment
+//return false;
+
+
+
+
 
 
 function getLearnerData(course, ag, submissions) {
