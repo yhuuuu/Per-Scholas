@@ -125,7 +125,7 @@ function getScores(learner_id, submissions, ag) {
         if (submission.learner_id == learner_id) {
             // if (isAssignmentDue(ag, submission)) {
             const assignment_id = submission.assignment_id;
-            const score = submission.submission.score;
+            let score = submission.submission.score;
             const total = getScoreTotal(ag, assignment_id)
             const submittedDate = submission.submission.submitted_at
             const dueDate = getAssignmentDue(ag, assignment_id)
@@ -135,6 +135,13 @@ function getScores(learner_id, submissions, ag) {
 
             //only output grades that is due
             if (x <= y && y < today) {
+                scores.push({
+                    learner_id: learner_id, assignment_id: assignment_id, score: score, total: total
+                })
+            }
+            //if the assignment is turn in past due date, deduct 10 percent of the total points possible from their score for that assignment
+            else if (x > y) {
+                score = score - (total * 0.1)
                 scores.push({
                     learner_id: learner_id, assignment_id: assignment_id, score: score, total: total
                 })
@@ -160,8 +167,6 @@ function getScoreTotal(ag, assignment_id) {
 }
 
 /**
- * 
- *  
  *  5. return assignment due date
  * 
  */
@@ -174,24 +179,47 @@ function getAssignmentDue(ag, assignment_id) {
 }
 
 
+/**
+ * 
+ *  6. Get verage
+ */
+function getAveage(scores) {
 
+    let scoreSum = 0
+    let totalSum = 0
+    for (const score of scores) {
+        scoreSum += score.score
+        totalSum += score.total
+    }
+    const avg = scoreSum / totalSum
 
-// Check if the assignment is due (due date is in the future, and submission date is in the past)
-//     if (dueDate >= submissionDate) {
-//         return true
-//     }
-
-// }
-
-// Return false if there is no submission for the assignment
-//return false;
-
-
+    return avg
+}
 
 
 
 
 function getLearnerData(course, ag, submissions) {
+    // here, we would process this data to achieve the desired result.
+    // const result = [
+    //   {
+    //     id: 125,
+    //     avg: 0.985, // (47 + 150) / (50 + 150)
+    //     1: 0.94, // 47 / 50
+    //     2: 1.0 // 150 / 150
+    //   },
+    //   {
+    //     id: 132,
+    //     avg: 0.82, // (39 + 125) / (50 + 150)
+    //     1: 0.78, // 39 / 50
+    //     2: 0.833 // late: (140 - 15) / 150
+    //   }
+    // ];
+    // 1. get all students
+    // 2. calculate all scores for each student
+    // 3. gather all results
+
+    const result = [];
 
     //console.log(getAllLearner(submissions))
     const learners = getAllLearner(submissions)
@@ -199,29 +227,28 @@ function getLearnerData(course, ag, submissions) {
     for (const learner of learners) {
         // {id: 123}
         const scores = getScores(learner.id, submissions, ag)
-        console.log(scores)
-    }
+        //console.log(scores)
 
+
+        //console.log(getAveage(scores))
+
+        //Data transform
+        const current = {}
+        current.id = learner.id
+        current.avg = getAveage(scores).toFixed(2)
+
+        for (const score of scores) {
+            current[score.assignment_id] = (score.score / score.total).toFixed(2)
+        }
+
+        result.push(current)
+
+    }
+    return result
 
 
 }
 
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
-
-//console.log(result);
-
-
-
-// console.log({
-//     id: 125,
-//     avg: 0.985, // (47 + 150) / (50 + 150)
-//     1: 0.94, // 47 / 50
-//     2: 1.0 // 150 / 150
-// },
-//     {
-//         id: 132,
-//         avg: 0.82, // (39 + 125) / (50 + 150)
-//         1: 0.78, // 39 / 50
-//         2: 0.833 // late: (140 - 15) / 150
-//     })
+console.log(result);
