@@ -257,7 +257,6 @@ function getLearnerData(course, ag, submissions) {
         const scores = getScores(learner.id, submissions, ag)
         //console.log(scores)
 
-
         //console.log(getAveage(scores))
 
         //Data transform
