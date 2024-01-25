@@ -145,6 +145,9 @@ function getScores(learner_id, submissions, ag) {
                 scores.push({
                     learner_id: learner_id, assignment_id: assignment_id, score: score, total: total
                 })
+            }// if the assigment is not due yet
+            else if (x < y && today < y) {
+                continue
             }
         }
 
@@ -161,9 +164,10 @@ function getScoreTotal(ag, assignment_id) {
     //assignment_id = ''
     try {
         //Validate assignment_is
-        if(!assignment_id){
+        if (!assignment_id) {
             throw new Error("Assignment id is empty")
         }
+
 
         for (const assignment of ag.assignments) {
             if (assignment.id == assignment_id) {
@@ -171,7 +175,7 @@ function getScoreTotal(ag, assignment_id) {
             }
         }
     }
-    catch(err){
+    catch (err) {
         console.log("Error: ", err.message)
         return null;
     }
@@ -201,9 +205,24 @@ function getAveage(scores) {
         scoreSum += score.score
         totalSum += score.total
     }
-    const avg = scoreSum / totalSum
+    
+    try {
+        
+        let avg = scoreSum / totalSum
+       
+        // Check for Nan (result of 0/0) and handle it if needed
+        if (isNaN(avg)) {
+            throw new Error("Division by zero or invalid input")
+        }
+        return avg;
+    }catch(error){
+        console.log("Error calculating average:", error.message)
+        return 0
 
-    return avg
+    }
+
+
+   
 }
 
 
@@ -232,7 +251,7 @@ function getLearnerData(course, ag, submissions) {
 
     //console.log(getAllLearner(submissions))
     const learners = getAllLearner(submissions)
-;
+        ;
     for (const learner of learners) {
         // {id: 123}
         const scores = getScores(learner.id, submissions, ag)
@@ -244,10 +263,10 @@ function getLearnerData(course, ag, submissions) {
         //Data transform
         const current = {}
         current.id = learner.id
-        current.avg = getAveage(scores).toFixed(2)
+        current.avg = getAveage(scores).toFixed(3)
 
         for (const score of scores) {
-            current[score.assignment_id] = (score.score / score.total).toFixed(2)
+            current[score.assignment_id] = (score.score / score.total).toFixed(3)
         }
 
         result.push(current)
@@ -261,4 +280,4 @@ function getLearnerData(course, ag, submissions) {
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 //console.log(result);
-result.forEach((element)=> console.log(element))
+result.forEach((element) => console.log(element))
