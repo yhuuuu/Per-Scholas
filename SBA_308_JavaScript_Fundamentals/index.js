@@ -76,70 +76,66 @@ const LearnerSubmissions = [
     }
 ];
 
+/**
+ *  1.Get all learner id
+ *  Return [ {id:1},{id:2},{id:3}]
+ */
+function getAllLearner(submissions) {
+    // Create an array to store all learner 
+    const learners = [];
+    // Loop for submissions
+    for (const submission of submissions) {
+        // variable to store current learner id
+        const curr_learner_id = submission.learner_id
 
+        //if the student is not exist, push to the array
+        if (!learnerExists(learners, curr_learner_id)) {
+            learners.push({ id: curr_learner_id })
+        }
+    }
+    return learners
+}
 
-
-
-
-//let studentsArray = [];
+/**
+ * 2. Create a function to check if leaner id is exist in the array
+ * Input:[ 125, 125, 125, 132, 132 ]
+ * Output:[125 ,132]
+ */
+function learnerExists(learners, currLearnerId) {
+    // Loop all learner array
+    for (const learner of learners) {
+        // if the currLearner id already existed
+        if (learner.id == currLearnerId) {
+            return true;
+        }
+    }
+    return false;
+}
 
 function getLearnerData(course, ag, submissions) {
 
-    //here, we would process this data to achieve the desired result.
-    const result = []
-    // Find out how many student in the data
-    let studentsArray = [];
-    // Loop for student submission information
+    console.log(getAllLearner(submissions))
 
-    for (let submission of submissions) {
-
-        // To find an existing student in studentsArray whose id matches submission.learner_id. 
-
-        let existingStudent = studentsArray.find(stu => stu.id === submission.learner_id)
-
-        // If the student is not exist, it will add the student
-        if (!existingStudent) {
-            studentsArray.push({ id: submission.learner_id });
-        }
-
-    }
-  //  console.log("Student sumbitted the assignment:", studentsArray);
-  
-    let studentsGrades = {}
-// Loop for each submission assignment 
-
-
-for (i = 0; i < studentsArray.length; i++) {
-    studentsGrades[studentsArray[i].id] = []
-    for (let key in LearnerSubmissions) {
-        //If such a student is found, student will be assigned the matching student object based on student.id;
-        if (LearnerSubmissions[key].learner_id === studentsArray[i].id) {
-            studentsGrades[studentsArray[i].id].push(LearnerSubmissions[key])
-        }
-    }
 }
-
-console.log(studentsGrades)
-//console.log(JSON.stringify(studentsGrades, null, 2));
-console.log('-------')
-    return result;
-}
+/** 
+ * 3. get submitted assignment for each learner
+ */
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
-console.log(result);
+//console.log(result);
 
 
 
-console.log({
-    id: 125,
-    avg: 0.985, // (47 + 150) / (50 + 150)
-    1: 0.94, // 47 / 50
-    2: 1.0 // 150 / 150
-},
-    {
-        id: 132,
-        avg: 0.82, // (39 + 125) / (50 + 150)
-        1: 0.78, // 39 / 50
-        2: 0.833 // late: (140 - 15) / 150
-    })
+// console.log({
+//     id: 125,
+//     avg: 0.985, // (47 + 150) / (50 + 150)
+//     1: 0.94, // 47 / 50
+//     2: 1.0 // 150 / 150
+// },
+//     {
+//         id: 132,
+//         avg: 0.82, // (39 + 125) / (50 + 150)
+//         1: 0.78, // 39 / 50
+//         2: 0.833 // late: (140 - 15) / 150
+//     })
