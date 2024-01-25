@@ -205,14 +205,14 @@ function getAveage(scores) {
         scoreSum += score.score
         totalSum += score.total
     }
-    
+    //totalSum = 0
     try {
         
-        let avg = scoreSum / totalSum
-       
+        const avg = scoreSum / totalSum
+        
         // Check for Nan (result of 0/0) and handle it if needed
-        if (isNaN(avg)) {
-            throw new Error("Division by zero or invalid input")
+        if (totalSum==0) {
+            throw new Error("total sum can not be '0' ")
         }
         return avg;
     }catch(error){
@@ -263,7 +263,7 @@ function getLearnerData(course, ag, submissions) {
         //Data transform
         const current = {}
         current.id = learner.id
-        current.avg = getAveage(scores).toFixed(3)
+        current.avg = getAveage(scores).toFixed(2)
 
         for (const score of scores) {
             current[score.assignment_id] = (score.score / score.total).toFixed(3)
