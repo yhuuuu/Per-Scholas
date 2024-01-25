@@ -112,14 +112,82 @@ function learnerExists(learners, currLearnerId) {
     return false;
 }
 
-function getLearnerData(course, ag, submissions) {
 
-    console.log(getAllLearner(submissions))
+/** 
+ * 3. get scores for each learner
+ * return [{assignment_id: 1, score: 47, total: 50},...]
+ */
+
+function getScores(learner_id, submissions, ag) {
+    const scores = [];
+    for (const submission of submissions) {
+        if (submission.learner_id == learner_id) {
+        // if past due date?
+                const assignment_id = submission.assignment_id;
+                const score = submission.submission.score;
+                const total = getScoreTotal(ag, assignment_id)
+                const smDueDate = submission.submission.submitted_at
+
+                scores.push({ learner_id: learner_id, assignment_id: assignment_id, score: score, total: total, DueDate: smDueDate })
+            
+
+        }
+    }
+    return scores;
+}
+
+
+/**
+ * 
+ * 4. get the possible earn score  
+ */
+function getScoreTotal(ag, assignment_id) {
+    for (const assignment of ag.assignments) {
+        if (assignment.id == assignment_id) {
+            return assignment.points_possible
+        }
+    }
 
 }
-/** 
- * 3. get submitted assignment for each learner
+/**
+ * 
+ *  5.Only count grades that is due
  */
+
+// function pastDue(ag, submission) {
+//     if (ag > submission) {
+//         return true
+//     }
+//     return false
+// }
+
+function getAssignmentDueDate(ag){
+    let x = []
+    for(const dueDate of ag.assignments){
+        //return dueDate.due_at
+        x.push({ duedate: dueDate.due_at })
+    }
+    return x
+    
+}
+console.log(getAssignmentDueDate(AssignmentGroup))
+
+
+function getLearnerData(course, ag, submissions) {
+
+    //console.log(getAllLearner(submissions))
+    const learners = getAllLearner(submissions)
+
+    for (const learner of learners) {
+        // {id: 123}
+        const scores = getScores(learner.id, submissions, ag)
+        console.log(scores)
+    }
+
+
+
+}
+
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
