@@ -182,8 +182,8 @@ function handelSubMenuElClick(event) {
       link.classList.remove('active')
     })
     console.log(subMenuEl.text);
-    mainEl.innerHTML = `<h1>${event.target.textContent}</h1>`;
 
+    mainEl.innerHTML = `<h1>${event.target.textContent.toUpperCase()}</h1>`;
 
   }
 }
