@@ -42,7 +42,7 @@ function validate(event) {
      */
 
     const emailval = isEmailValid()
-    if (!isEmailValid()) {
+    if (!emailval) {
         event.preventDefault();
         errMsg.innerText = "Email must be a valid email address";
         errMsg.style.display = 'block';
@@ -51,7 +51,7 @@ function validate(event) {
     }
 
     const emailDomainVal = isEmailDomainValid()
-    if (!isEmailDomainValid()) {
+    if (!emailDomainVal) {
         event.preventDefault();
         errMsg.innerText = `The email must not be from the domain "example.com."`;
         errMsg.style.display = 'block';
@@ -74,7 +74,7 @@ function validate(event) {
     const passwordSpeciaCharVal = isPasswordSpecialCharacterValid()
     const passwordWordVal = isPasswordContainWord()
     const passwordUnameVal = isPasswordContainUsername()
-const passwordMatch = isPasswordMatch()
+    const passwordMatch = isPasswordMatch()
 
 
 
@@ -94,18 +94,15 @@ const passwordMatch = isPasswordMatch()
     } else if (!passwordUnameVal) {
         event.preventDefault();
         errMsg.innerText = `Passwords cannot contain username`;
-    }
-    else if(passwordMatch){
+    } else if (passwordMatch) {
         event.preventDefault();
         errMsg.innerText = `Passwords not match`;
     }
 
-
-    if (!passwordVal || !passwordNumVal || !passwordSpeciaCharVal || !passwordWordVal||!passwordUnameVal)
+    if (!passwordVal || !passwordNumVal || !passwordSpeciaCharVal || !passwordWordVal || !passwordUnameVal){
         errMsg.style.display = 'block';
     errMsgTimeout(errMsg);
-    return false;
-}
+    return false;}
 
 
 /**
@@ -113,6 +110,15 @@ const passwordMatch = isPasswordMatch()
  * The terms and conditions must be accepted.
  */
 
+const checkedTerm = isTermsAndConditionsValid() 
+if (!checkedTerm) {
+    event.preventDefault();
+    errMsg.innerText = `The terms and conditions must be accepted`;
+    errMsg.style.display = 'block';
+    errMsgTimeout(errMsg);
+    return false;
+}
+}
 /**
  * 
  * Registration Form - Form Submission:
@@ -222,17 +228,27 @@ function isPasswordContainUsername() {
     const passwordRegex = new RegExp(`^(?=.*\\b${username}\\b).{12,}$`);
     if (!passwordRegex.test(password.value)) {
         console.log(password.value);
-   
+
         return false;
     }
     return true;
 }
 
 
-  // Both password must match
-  function isPasswordMatch(){
-    if(!passwordCheck.value == password.value){
+// Both password must match
+function isPasswordMatch() {
+    if (!passwordCheck.value == password.value) {
         return false
     }
     return true
-  }
+}
+
+
+//Registration Form - Terms and Conditions:
+//The terms and conditions must be accepted.
+function isTermsAndConditionsValid() {
+    if (!termsAndConditions.checked) {
+        return false;
+    }
+    return true;
+}
