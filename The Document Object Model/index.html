@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Swap</title>
     <link rel="stylesheet" href="./src/style.css">
-    <script src ="./src/index.js"></script>
-
+    <script src="./src/index.js"></script>
+    <h1>Plant Exchange</h1>
+    <hr>
+    <nav>
+        <a>Swap List</a>
+        <a>My WishLish</a>
+        <a>Plant Diagnose List</a>
+    </nav>
+    <hr>
 </head>
 
 <body>
-    
+    <div class="form-container">
+        <form>
+            <!-- <label>First Name: </label>
+            <input type="text" id="fname" name="fname">
+
+            <label>Last Name: </label>
+            <input type="text" id="lname" name="lname"> -->
+
+            <label>Plant Name: <input type="text" id="pname" name="pname"> </label>
+            <label>Choose a Plant Type:
+                <select id="ptype" name="ptype">
+                    <option value="in-plant">Indoor Plant</option>
+                    <option value="out-plant">Outdoor Plant</option>
+                    <option value="seeds">Seed</option>
+                </select>
+            </label>
+            <label>Plant Height: <input type="text" id="pheight" name="pheight"></label>
+            <label>Plant Width: <input type="text" id="pwidth" name="pwidth"></label>
+            <label>Plant Health Condition:
+                <input type="checkbox" id="condition1" name="condition1" value="condition1">
+                <label for="option1"> Healthy</label>
+                <input type="checkbox" id="condition2" name="condition2" value="condition2">
+                <label for="option2"> Need more love</label>
+                <input type="checkbox" id="condition3" name="condition3" value="condition3">
+                <label for="option2"> Sick </label>
+                <input type="checkbox" id="condition3" name="condition3" value="condition3">
+                <label for="option2"> Dying </label>
+            </label>
+            <label>Post Date: <input type="date" id="pdate" name="pdate"></label>
+            <label>Exchange Preferences: <input type="checkbox" id="option1" name="option1" value="ship">
+                <label for="option1"> Ship</label>
+                <input type="checkbox" id="option2" name="option2" value="inPerson">
+                <label for="option2"> In-person</label>
+            </label>
+            <button>Add to Swap List</button>
+        </form>
+
+    </div>
+
+    <div class="swaplist-container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis fugit, atque maxime vitae reprehenderit ratione eum doloribus blanditiis, quos eligendi hic tempore ut, placeat impedit culpa magnam velit minus alias?
+    </div>
+
+
+
 </body>
+
 </html>
