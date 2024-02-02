@@ -1,8 +1,9 @@
 // First find the element from html
 const pname = document.getElementById("pname");
 const submitBtn = document.getElementById("submitBtn");
+const swapListContainer = document.getElementsByClassName("swaplist-container")[0]
 
-const swapListContainer = document.getElementsByClassName("swaplist-container")
+
 // Get the input value from the form after clicking the button
 submitBtn.addEventListener('click', handleClick);
 
@@ -16,10 +17,12 @@ function handleClick(event) {
     
      //Create new div
      const newDiv = document.createElement("div")
+     //new div = input value
      newDiv.textContent = pname.value 
-     console.log(newDiv);
-    //  newDiv.textContent = pname.value;
-    // //add value to the new div
-    // swapListContainer.appendChild(newDiv)
+     //console.log(newDiv);
+  
+    //add value to the new div
+    swapListContainer.appendChild(newDiv)
+    
 
 }
