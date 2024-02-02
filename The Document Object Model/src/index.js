@@ -4,7 +4,7 @@ const plantNameInput = document.getElementById("pname")
 const plantTypeSelect = document.getElementById("ptype")
 const pheight = document.getElementById("pheight");
 const pwidth = document.getElementById("pwidth");
-const conditionCheckBoxes = document.querySelectorAll("condition");
+const conditionCheckBoxes = document.querySelectorAll(".condition");
 const problem = document.querySelectorAll("problem")
 const preferenceCheckBox = document.querySelectorAll("problem")
 const postDate = document.getElementById("pdate")
@@ -15,14 +15,14 @@ submitBtn.addEventListener('click', handleClick);
 
 //Plant class
 class Plant {
-    constructor(name, type, height, width, conditon, problem, exchang_method, postDate) {
+    constructor(name, type, height, width, conditon, problem, exchange_method, postDate) {
         this.name = name
         this.type = type
         this.height = height
         this.width = width
         this.condition = conditon
         this.problem = problem
-        this.exchang_method = exchang_method
+        this.exchange_method = exchange_method
         this.postDate = postDate
     }
 }
@@ -36,18 +36,27 @@ function handleClick(event) {
     const plantNameValue = plantNameInput.value;
     const plantTypeValue = plantTypeSelect.value;
     const plantHeightValue = pheight.value;
+    const plantWidthValue = pwidth.value;
+    //
+    const plantCondition = conditionCheckBoxes.value;
+  
+    const plantProblem =  problem.value;
+    const exchange_prefrence = preferenceCheckBox.value;
+    const plantPostDayValue = postDate.value
 
-    // Create my first plant object
-    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue);
+
+    // Create the plant object
+    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue,plantWidthValue,plantCondition,plantProblem,exchange_prefrence,plantPostDayValue);
 
     // Log the plant object to check if values are captured correctly
     console.log(plant);
-
+    //console.log(plantCondition[0]);
+    console.log(conditionCheckBoxes[0].defaultValue);
     // Create a new row and insert cells for each property of the plant object
     const newRow = infoTableBody.insertRow(infoTableBody.rows.length);
 
     for (const property in plant) {
-        if (plant1.hasOwnProperty(property)) {
+        if (plant.hasOwnProperty(property)) {
             const cell = newRow.insertCell();
             cell.innerHTML = plant[property];
         }
