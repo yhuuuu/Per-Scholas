@@ -6,7 +6,7 @@ const pheight = document.getElementById("pheight");
 const pwidth = document.getElementById("pwidth");
 const conditionCheckBoxes = document.querySelectorAll(".condition");
 const problem = document.querySelectorAll("problem")
-const preferenceCheckBox = document.querySelectorAll("problem")
+const preferenceCheckBoxs = document.querySelectorAll(".option")
 const postDate = document.getElementById("pdate")
 const swapListContainer = document.getElementsByClassName("swaplist-container")[0]
 
@@ -37,47 +37,66 @@ function handleClick(event) {
     const plantTypeValue = plantTypeSelect.value;
     const plantHeightValue = pheight.value;
     const plantWidthValue = pwidth.value;
-    //
-    const plantCondition = conditionCheckBoxes.value;
-  
-    const plantProblem =  problem.value;
-    const exchange_prefrence = preferenceCheckBox.value;
+
+    const plantCondition = getPlantCondition(conditionCheckBoxes)
+    const plantProblem = problem.value;
+    const exchange_prefrence = getExhangePreference(preferenceCheckBoxs)
     const plantPostDayValue = postDate.value
 
-
     // Create the plant object
-    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue,plantWidthValue,plantCondition,plantProblem,exchange_prefrence,plantPostDayValue);
+    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue, plantWidthValue, plantCondition, plantProblem, exchange_prefrence, plantPostDayValue);
 
     // Log the plant object to check if values are captured correctly
     console.log(plant);
-    //console.log(plantCondition[0]);
-    console.log(conditionCheckBoxes[0].defaultValue);
-    // Create a new row and insert cells for each property of the plant object
+    console.log(plantCondition);
+    console.log(exchange_prefrence);
+
+    /**
+     * Creating a new row (<tr>) and appending it to an HTML table. 
+     * infoTableBody: <tbody> element 
+     * infoTableBody.rows.length: retrieves the number of rows currently in the table body 
+     * infoTableBody.insertRow(infoTableBody.rows.length): creates a new table row (<tr>) and inserts it at the end of the table body. 
+     */
     const newRow = infoTableBody.insertRow(infoTableBody.rows.length);
 
+    //iterate over the properties of plant object (plantNameValue, plantTypeValue, plantHeightValue...)
     for (const property in plant) {
+        // checks if the property being iterated over is a direct property of the object itself
         if (plant.hasOwnProperty(property)) {
+            //creates a new table cell (<td>) and assigns it to the variable cell
             const cell = newRow.insertCell();
+            //sets the content of the newly created cell to the value of the current property of the plant object being iterated over
             cell.innerHTML = plant[property];
         }
     }
 }
 
-//     //insert a row into an HTML table when a add button is cliked  
-//     const infoTableBody = document.getElementById('info-tbody')
-
-//     const newRow = infoTableBody.insertRow(infoTableBody.rows.length);
-
-//     // Insert cells and set their content
-//     const cell1 = newRow.insertCell(0);
-//     const cell2 = newRow.insertCell(1);
-//     const cell3 = newRow.insertCell(2)
-
-//     cell1.innerHTML = plantNameValue
-//     cell2.innerHTML = plantTypeValue
-//     cell3.innerHTML = plantHeightValue
 
 
-// }
+//Get all conditoins that is checked and store in a array
+function getPlantCondition(conditionCheckBoxes) {
+    const selectedConditions = []
+    for (const checkbox of conditionCheckBoxes) {
+        if (checkbox.checked) {
+            selectedConditions.push(checkbox.value)
+        }     
+    }
+    return selectedConditions
+}
+
+//Get all exhange preference that is checked and store in a array
+function getExhangePreference(preferenceCheckBoxs){
+    const selectedExchangePerference = []
+    for (const checkbox of preferenceCheckBoxs) {
+        if (checkbox.checked) {
+            selectedExchangePerference.push(checkbox.value)
+        }     
+    }
+    return selectedExchangePerference
+}
+
+function showProblembox(){
+    
+}
 
 
