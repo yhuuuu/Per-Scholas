@@ -23,10 +23,10 @@
 
         <form>
             <!-- Plant Name -->
-            <label for="pname">Plant Name: <input type="text" id="pname" name="pname" required></label>
+            <label for="pname">Plant Name: <input type="text" id="pname" name="pname" ></label>
             <!-- Plant Type -->
             <label for="ptype">Choose a Plant Type:
-                <select id="ptype" name="ptype" required>
+                <select id="ptype" name="ptype" >
                     <option value="in-plant">Indoor Plant</option>
                     <option value="out-plant">Outdoor Plant</option>
                     <option value="seeds">Seed</option>
@@ -63,11 +63,11 @@
             <fieldset>
                 <legend>Do you notice any problem on your plant?</legend>
                 <label for="has_problem">
-                    <input type="radio" name="problem" id="has_problem">
+                    <input type="radio" name="problem" id="has_problem" class="problem" value="yes">
                     Yes
                 </label>
                 <label for="no_problem">
-                    <input type="radio" name="problem" id="no_problem">
+                    <input type="radio" name="problem" id="no_problem" class="problem" value="no">
                     No
                 </label>
                 <button type="button">Click Here to Help You Diagnose Plant Problems</button>
@@ -92,19 +92,36 @@
             </label>
 
             <!-- Addtional Commons  -->
-            <label for="pdes">Addtional Commons: </label>
-            <textarea id="pdes" name="pdes"></textarea>
+            <!-- <label for="pdes">Addtional Commons: </label>
+            <textarea id="pdes" name="pdes"></textarea> -->
 
 
             <!-- Post Date -->
             <label for="pdate">Post Date: <input type="date" id="pdate" name="pdate"></label>
 
             <button type="submit" id="submitBtn">Add to Swap List</button>
+            <button type="button" id="ResetBtn">Reset</button>
         </form>
     </div>
 
     <div class="swaplist-container">
         <h1> Swap List</h1>
+        <table class="infoTable">
+            <thead>
+                <tr>
+                    <td>Plant Name</td>
+                    <td>Plant Type</td>
+                    <td>Plant Height</td>
+                    <td>Plant Width</td>
+                    <td>Plant Health Condition</td>
+                    <td>Plant Problem(s)</td>
+                    <td>Exchange Preferences</td>
+                    <td>Post Date</td>
+                    <td>Commons</td>
+
+                </tr>
+            </thead>
+        </table>
     </div>
 
     <script src="./src/index.js"></script>
