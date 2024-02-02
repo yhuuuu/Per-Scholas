@@ -22,8 +22,9 @@
     <div class="form-container">
 
         <form>
+            <!-- Plant Name -->
             <label for="pname">Plant Name: <input type="text" id="pname" name="pname" required></label>
-
+            <!-- Plant Type -->
             <label for="ptype">Choose a Plant Type:
                 <select id="ptype" name="ptype" required>
                     <option value="in-plant">Indoor Plant</option>
@@ -32,56 +33,82 @@
                 </select>
             </label>
 
-            <label for="pheight">Plant Height: <input type="number" id="pheight" name="pheight"></label>
+            <!-- Plant Measurement -->
+            <label for="pheight">Plant Height: <input type="number" id="pheight" name="pheight" min="0"> inches</label>
 
-            <label for="pwidth">Plant Width: <input type="number" id="pwidth" name="pwidth"></label>
+            <label for="pwidth">Plant Width: <input type="number" id="pwidth" name="pwidth" min="0"> inches</label>
 
-            <label>Plant Health Condition:
-                <input type="checkbox" id="condition1" name="condition1" value="condition1">
-                <label for="condition1"> Healthy</label>
-                <input type="checkbox" id="condition2" name="condition2" value="condition2">
-                <label for="condition2"> Need more love</label>
-                <input type="checkbox" id="condition3" name="condition3" value="condition3">
-                <label for="condition3"> Sick </label>
-                <input type="checkbox" id="condition4" name="condition4" value="condition4">
-                <label for="condition4"> Dying </label>
-            </label>
-
-            <label for="problem"> Do you notice any problem on your plant?
-                <input type="radio" name="problem" id="has_problem" >
-                <label for="has_problem">Yes</label>
-                <input type="radio" name="problem" id="no_problem">
-                <label for="no_problem">No</label>
-                <button type="button">Click Here to Help You Diagnose Plant Problems</button><br>
-                <label for="pdes">If "Yes", please tell what problem do you see:<br>
-                    <textarea id="pdes" name="pdes"></textarea>
+            <!-- Plant Consition-->
+            <fieldset>
+                <legend>Plant Health Condition:</legend>
+                <label for="condition1">
+                    <input type="checkbox" id="condition1" name="condition1" value="Healthy" class="condition">
+                    Healthy
                 </label>
+                <label for="condition2">
+                    <input type="checkbox" id="condition2" name="condition2" value="Need more love" class="condition">
+                    Need more love
+                </label>
+                <label for="condition3">
+                    <input type="checkbox" id="condition3" name="condition3" value="Sick" class="condition">
+                    Sick
+                </label>
+                <label for="condition4">
+                    <input type="checkbox" id="condition4" name="condition4" value="Dying" class="condition">
+                    Dying
+                </label>
+            </fieldset>
+
+            <!-- Plant Problem -->
+            <fieldset>
+                <legend>Do you notice any problem on your plant?</legend>
+                <label for="has_problem">
+                    <input type="radio" name="problem" id="has_problem">
+                    Yes
+                </label>
+                <label for="no_problem">
+                    <input type="radio" name="problem" id="no_problem">
+                    No
+                </label>
+                <button type="button">Click Here to Help You Diagnose Plant Problems</button>
+
+                <div id="additionalContent" style="display: none; ">
+
+                    <label for="pdes">If "Yes", please tell what problem do you see:<br>
+                        <textarea id="pdes" name="pdes"></textarea>
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Exchange Preferences -->
+            <label>Exchange Preferences: </label>
+            <label for="option1">
+                <input type="checkbox" id="option1" name="option1" class="option">
+                Ship
+            </label>
+            <label for="option2">
+                <input type="checkbox" id="option2" name="option2" class="option">
+                In-person
             </label>
 
-            <!-- <label for="pdate">Post Date: <input type="date" id="pdate" name="pdate" required></label> -->
+            <!-- Addtional Commons  -->
+            <label for="pdes">Addtional Commons: </label>
+            <textarea id="pdes" name="pdes"></textarea>
 
-            <label>Exchange Preferences:
-                <input type="checkbox" id="option1" name="option1" value="ship">
-                <label for="option1"> Ship</label>
-                <input type="checkbox" id="option2" name="option2" value="inPerson">
-                <label for="option2"> In-person</label>
-            </label>
 
-            <label for="pdes">Description:
-                <textarea id="pdes" name="pdes"></textarea>
-            </label>
+            <!-- Post Date -->
+            <label for="pdate">Post Date: <input type="date" id="pdate" name="pdate"></label>
 
             <button type="submit" id="submitBtn">Add to Swap List</button>
         </form>
     </div>
 
     <div class="swaplist-container">
-        <h1> div to add list</h1>
+        <h1> Swap List</h1>
     </div>
 
-
     <script src="./src/index.js"></script>
-    
+
 </body>
 
 </html>
