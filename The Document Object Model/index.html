@@ -23,15 +23,18 @@
 
         <form>
             <!-- Plant Name -->
-            <label for="pname">Plant Name: <input type="text" id="pname" name="pname" ></label>
+            <label for="pname">Plant Name:
+            <input type="text" id="pname" name="pname"></label>
+
             <!-- Plant Type -->
-            <label for="ptype">Choose a Plant Type:
-                <select id="ptype" name="ptype" >
-                    <option value="in-plant">Indoor Plant</option>
-                    <option value="out-plant">Outdoor Plant</option>
-                    <option value="seeds">Seed</option>
-                </select>
-            </label>
+            <label for="ptype">Choose a Plant Type: 
+            <select id="ptype" name="ptype">
+                <option> Indoor Plant</option>
+                <option> Outdoor Plant</option>
+                <option> Seed</option>
+            </select>
+        </label>
+
 
             <!-- Plant Measurement -->
             <label for="pheight">Plant Height: <input type="number" id="pheight" name="pheight" min="0"> inches</label>
@@ -106,7 +109,7 @@
 
     <div class="swaplist-container">
         <h1> Swap List</h1>
-        <table class="infoTable">
+        <table id="info-t">
             <thead>
                 <tr>
                     <td>Plant Name</td>
@@ -118,9 +121,11 @@
                     <td>Exchange Preferences</td>
                     <td>Post Date</td>
                     <td>Commons</td>
-
                 </tr>
             </thead>
+            <tbody id=info-tbody>
+
+            </tbody>
         </table>
     </div>
 
