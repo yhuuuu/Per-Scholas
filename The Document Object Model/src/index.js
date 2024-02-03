@@ -6,31 +6,34 @@ const pheight = document.getElementById("pheight");
 const pwidth = document.getElementById("pwidth");
 const conditionCheckBoxes = document.querySelectorAll(".condition");
 const pproblem = document.querySelectorAll(".problem");
-const pdesTextarea = document.getElementById("pdes");
 const preferenceCheckBoxs = document.querySelectorAll(".option");
 const postDate = document.getElementById("pdate");
 const swapListContainer = document.getElementsByClassName("swaplist-container")[0];
 
 //const radioButtons = document.getElementsByClassName("problem")
 const additonalBox = document.getElementById("additionalContent")
+const problemDesBox = document.getElementById('problem_des')
+
+const pdesTextarea = document.getElementById("pdes")
 
 // // Get the input value from the form after clicking the button
 submitBtn.addEventListener('click', handleAddButton);
 
 //Plant class
 class Plant {
-    constructor(name, type, height, width, conditon, problem, exchange_method, postDate) {
+    constructor(name, type, height, width, conditon, problem,problem_des, exchange_method, postDate, description) {
         this.name = name
         this.type = type
         this.height = height
         this.width = width
         this.condition = conditon
         this.problem = problem
+        this.problem_des = problem_des
         this.exchange_method = exchange_method
         this.postDate = postDate
+        this.description = description
     }
 }
-
 
 function handleAddButton(event) {
     // Prevent the default form submission behavior
@@ -44,15 +47,21 @@ function handleAddButton(event) {
 
     const plantCondition = getPlantCondition(conditionCheckBoxes)
     const plantProblem = getSelectedRadioValue(pproblem)
+    const plantProblemDescription = problemDesBox.value
     const exchange_prefrence = getExhangePreference(preferenceCheckBoxs)
+
     const plantPostDayValue = postDate.value
+    const plantDescription = pdesTextarea.value
 
     // Create the plant object
-    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue, plantWidthValue, plantCondition, plantProblem, exchange_prefrence, plantPostDayValue);
+    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue, plantWidthValue, plantCondition, plantProblem,plantProblemDescription, exchange_prefrence, plantPostDayValue,plantDescription);
+
 
     // Log the plant object to check if values are captured correctly
 
 
+ console.log(plantProblemDescription);
+ console.log(problemDesBox.value);
 
     /**
      * Creating a new row (<tr>) and appending it to an HTML table. 
@@ -89,35 +98,26 @@ function getPlantCondition(conditionCheckBoxes) {
 //add event listener to all answer
 for (const radioButton of pproblem) {
     radioButton.addEventListener('change', () => handleProblemChange(radioButton.value))
-
-    // console.log("click");
-    // console.log(pproblem);
 }
 
 //Get selected answer for plant radio button is click
 function handleProblemChange(buttonValue) {
     let selectedValue = buttonValue
     // if yes -->box show, return value and box value
-    if (selectedValue == 'yes') {
-    }
     // if no --> box hid. return value only
-    else {
-        additonalBox.style.display = "none"
-    }
+    additonalBox.style.display = (buttonValue === 'yes') ? 'block' : 'none';
+    
     return selectedValue
 }
-
+//Get selected plant problem anwser 
 function getSelectedRadioValue(radioButtons) {
+
     for (const radioButton of radioButtons) {
         if (radioButton.checked) {
             return radioButton.value;
         }
     }
 }
-
-
-
-
 
 //Get all exhange preference that is checked and store in a array
 function getExhangePreference(preferenceCheckBoxs) {
@@ -129,3 +129,5 @@ function getExhangePreference(preferenceCheckBoxs) {
     }
     return selectedExchangePerference
 }
+
+

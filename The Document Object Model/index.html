@@ -24,16 +24,16 @@
         <form>
             <!-- Plant Name -->
             <label for="pname">Plant Name:
-            <input type="text" id="pname" name="pname"></label>
+                <input type="text" id="pname" name="pname"></label>
 
             <!-- Plant Type -->
-            <label for="ptype">Choose a Plant Type: 
-            <select id="ptype" name="ptype">
-                <option> Indoor Plant</option>
-                <option> Outdoor Plant</option>
-                <option> Seed</option>
-            </select>
-        </label>
+            <label for="ptype">Choose a Plant Type:
+                <select id="ptype" name="ptype">
+                    <option> Indoor Plant</option>
+                    <option> Outdoor Plant</option>
+                    <option> Seed</option>
+                </select>
+            </label>
 
 
             <!-- Plant Measurement -->
@@ -77,8 +77,8 @@
 
                 <div id="additionalContent" style="display: none; ">
 
-                    <label for="pdes">If "Yes", please tell what problem do you see:<br>
-                        <textarea id="pdes" name="pdes"></textarea>
+                    <label for="problem_des">If "Yes", please tell what problem do you see:<br>
+                        <textarea id="problem_des" name="problem_des"></textarea>
                     </label>
                 </div>
             </fieldset>
@@ -95,8 +95,8 @@
             </label>
 
             <!-- Addtional Commons  -->
-            <!-- <label for="pdes">Addtional Commons: </label>
-            <textarea id="pdes" name="pdes"></textarea> -->
+            <label for="pdes">Description: </label>
+            <textarea id="pdes" name="pdes" placeholder = "Enter description here... "></textarea>
 
 
             <!-- Post Date -->
@@ -118,9 +118,10 @@
                     <td>Plant Width</td>
                     <td>Plant Health Condition</td>
                     <td>Plant Problem(s)</td>
+                    <td>Problem Description</td>
                     <td>Exchange Preferences</td>
                     <td>Post Date</td>
-                    <td>Commons</td>
+                    <td>Description</td>
                 </tr>
             </thead>
             <tbody id=infoTableBody>
