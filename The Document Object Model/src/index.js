@@ -159,7 +159,17 @@ function handleRestButton(form, plants) {
 
 
 //Create a message window
+// /https://github.com/MaxArt2501/share-this/issues/17
+function problemBtn() {
 
-function problemBtn(){
-    const pbtn = window.open("","MsgWindow","width=400, height = 400")
-    }
+    const width = 640;
+    const height = 800;
+    const left = screen.availLeft + (screen.availWidth - width) /2;
+    const top = screen.availTop + (screen.availHeight - height) / 2;
+    window.open('./problem.html', 'mywin', `width=${width},height=${height},left=${left},top=${top}`);
+
+}
+
+
+
+
