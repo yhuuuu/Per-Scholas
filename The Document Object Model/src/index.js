@@ -1,5 +1,6 @@
 // First find the element from html
-const submitBtn = document.getElementById("submitBtn");
+const addBtn = document.getElementById("addBtn");
+const resetBtn = document.getElementById("resetBtn")
 const plantNameInput = document.getElementById("pname")
 const plantTypeSelect = document.getElementById("ptype")
 const pheight = document.getElementById("pheight");
@@ -9,19 +10,18 @@ const pproblem = document.querySelectorAll(".problem");
 const preferenceCheckBoxs = document.querySelectorAll(".option");
 const postDate = document.getElementById("pdate");
 const swapListContainer = document.getElementsByClassName("swaplist-container")[0];
-
-//const radioButtons = document.getElementsByClassName("problem")
 const additonalBox = document.getElementById("additionalContent")
 const problemDesBox = document.getElementById('problem_des')
-
 const pdesTextarea = document.getElementById("pdes")
 
 // // Get the input value from the form after clicking the button
-submitBtn.addEventListener('click', handleAddButton);
+addBtn.addEventListener('click', handleAddButton);
+resetBtn.addEventListener('click', () => handleRestButton(document.getElementById('swap-from'), plantsArray));
 
-//Plant class
+
+//Create a Plant class
 class Plant {
-    constructor(name, type, height, width, conditon, problem,problem_des, exchange_method, postDate, description) {
+    constructor(name, type, height, width, conditon, problem, problem_des, exchange_method, postDate, description) {
         this.name = name
         this.type = type
         this.height = height
@@ -34,6 +34,8 @@ class Plant {
         this.description = description
     }
 }
+// Array to store plant objects
+const plantsArray = []
 
 function handleAddButton(event) {
     // Prevent the default form submission behavior
@@ -54,14 +56,13 @@ function handleAddButton(event) {
     const plantDescription = pdesTextarea.value
 
     // Create the plant object
-    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue, plantWidthValue, plantCondition, plantProblem,plantProblemDescription, exchange_prefrence, plantPostDayValue,plantDescription);
+    const plant = new Plant(plantNameValue, plantTypeValue, plantHeightValue, plantWidthValue, plantCondition, plantProblem, plantProblemDescription, exchange_prefrence, plantPostDayValue, plantDescription);
 
+    // Add the plant object to the array
+    plantsArray.push(plant);
 
     // Log the plant object to check if values are captured correctly
-
-
- console.log(plantProblemDescription);
- console.log(problemDesBox.value);
+    console.log(plantsArray);
 
     /**
      * Creating a new row (<tr>) and appending it to an HTML table. 
@@ -106,7 +107,7 @@ function handleProblemChange(buttonValue) {
     // if yes -->box show, return value and box value
     // if no --> box hid. return value only
     additonalBox.style.display = (buttonValue === 'yes') ? 'block' : 'none';
-    
+
     return selectedValue
 }
 //Get selected plant problem anwser 
@@ -131,3 +132,28 @@ function getExhangePreference(preferenceCheckBoxs) {
 }
 
 
+//helper function for reset button event
+function handleRestButton(plant){
+    plant.forEach(element => {
+        element = ""
+    });
+
+}
+
+// Helper function for reset button event
+function handleRestButton(form, plants) {
+    // Reset form values
+    form.reset();
+
+    // Reset plant objects
+    plants.forEach(plant => {
+        for (const property in plant) {
+            if (plant.hasOwnProperty(property)) {
+                plant[property] = "";
+            }
+        }
+    });
+
+    // Reset additional box style
+    additonalBox.style.display = 'none';
+}
