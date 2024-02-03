@@ -18,7 +18,6 @@ const pdesTextarea = document.getElementById("pdes")
 addBtn.addEventListener('click', handleAddButton);
 resetBtn.addEventListener('click', () => handleRestButton(document.getElementById('swap-from'), plantsArray));
 
-
 //Create a Plant class
 class Plant {
     constructor(name, type, height, width, conditon, problem, problem_des, exchange_method, postDate, description) {
@@ -133,7 +132,7 @@ function getExhangePreference(preferenceCheckBoxs) {
 
 
 //helper function for reset button event
-function handleRestButton(plant){
+function handleRestButton(plant) {
     plant.forEach(element => {
         element = ""
     });
@@ -157,3 +156,10 @@ function handleRestButton(form, plants) {
     // Reset additional box style
     additonalBox.style.display = 'none';
 }
+
+
+//Create a message window
+
+function problemBtn(){
+    const pbtn = window.open("","MsgWindow","width=400, height = 400")
+    }
