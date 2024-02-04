@@ -62,7 +62,7 @@
 
             <!-- Plant Conditions-->
             <fieldset>
-                <legend>Plant Health Condition:</legend>
+                <label class="form-label">Plant Health Condition: </label>
 
                 <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input condition" id="condition1" name="condition1"
@@ -74,85 +74,122 @@
 
                 <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input condition" id="condition2" name="condition2"
-                        value="Need more love" class="condition" value="Healthy">
-                    <label for="condition2" class="form-check-label"> 
+                        value="Need more love">
+                    <label for="condition2" class="form-check-label">
                         Need more love
                     </label>
                 </div>
 
-                <label for="condition3">
-                    <input type="checkbox" id="condition3" name="condition3" value="Sick" class="condition">
-                    Sick
-                </label>
-                <label for="condition4">
-                    <input type="checkbox" id="condition4" name="condition4" value="Dying" class="condition">
-                    Dying
-                </label>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input condition" id="condition3" name="condition3"
+                        value="Sick">
+                    <label for="condition3" class="form-check-label">
+                        Sick
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input condition" id="condition4" name="condition4"
+                        value="Dying">
+                    <label for="condition4" class="form-check-label">
+                        Dying
+                    </label>
+                </div>
             </fieldset>
 
 
 
             <!-- Plant Problem -->
             <fieldset>
-                <legend>Do you notice any problem on your plant?</legend>
-                <label for="has_problem">
-                    <input type="radio" name="problem" id="has_problem" class="problem" value="yes">
-                    Yes
-                </label>
-                <label for="no_problem">
-                    <input type="radio" name="problem" id="no_problem" class="problem" value="no">
-                    No
-                </label>
-                <button type="button" onclick="problemBtn()">
-                    Click Here to Help You Diagnose Plant Problems</button>
+                <label class="form-label"> Do you notice any problem on your plant?</label>
 
-                <div id="additionalContent" style="display: none; ">
-
-                    <label for="problem_des">If "Yes", please tell what problem do you see:<br>
-                        <textarea id="problem_des" name="problem_des"></textarea>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input problem" type="radio" name="problem" id="has_problem" value="yes">
+                    <label for="has_problem">
+                        Yes
                     </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input problem" type="radio" name="problem" id="no_problem" value="no">
+                    <label for="no_problem">
+                        No
+                    </label>
+                </div>
+
+                <!-- pop up windows for plant problems -->
+                <button type="button" class="btn btn-primary" onclick="problemBtn()">
+                    Click Here to Help You Diagnose Plant Problems
+                </button>
+
+                <!-- Comment box -->
+                <div id="additionalContent" style="display: none;">
+                    <textarea class="form-control" placeholder="If Yes, please comment the problem here:"
+                        id="problem_des" name="problem_des"></textarea>
                 </div>
             </fieldset>
 
             <!-- Exchange Preferences -->
-            <label>Exchange Preferences: </label>
-            <label for="option1">
-                <input type="checkbox" id="option1" name="option1" class="option" value="Ship">
-                Ship
-            </label>
-            <label for="option2">
-                <input type="checkbox" id="option2" name="option2" class="option" value="In-person">
-                In-person
-            </label>
+
+            <label class="form-label"> Exchange Preferences: </label>
+            <div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input option" id="option1" name="option1" value="Ship">
+                    <label class="form-check-label" for="option1">
+                        Ship
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input option" id="option2" name="option2"
+                        value="In-person">
+                    <label class="form-check-label" for="option2">
+                        In-person
+                    </label>
+                </div>
+            </div>
 
             <!-- Addtional Commons  -->
-            <label for="pdes">Description: </label>
-            <textarea id="pdes" name="pdes" placeholder="Enter description here... "></textarea>
-
+            <label class="form-label" for="pdes">Description: </label>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Enter description here" id="pdes" name="pdes"
+                    style="height: 100px"></textarea>
+            </div>
 
             <!-- Post Date -->
-            <label for="pdate">Post Date: <input type="date" id="pdate" name="pdate"></label>
+            <label class="form-label" for="pdate">Post Date:
+                <input type="date" id="pdate" name="pdate">
+            </label>
 
-            <button type="submit" id="addBtn">Add to Swap List</button>
-            <button type="button" id="resetBtn">Reset</button>
+            <!-- buttons -->
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit" id="addBtn">Add to Swap List</button>
+                <!-- <input class="btn btn-primary" type="reset" value="Reset"> -->
+                <button class = "btn btn-secondary" type="button" id="resetBtn">Reset</button>
+
+            </div>
+
+            <!-- <button class="btn btn-primary" type="submit" id="addBtn">Add to Swap List</button> -->
+
+
         </form>
     </div>
 
     <div class="swaplist-container">
         <h1> Swap List</h1>
-        <table id="info-t">
+        <table class="table table-striped" id="info-t">
             <thead>
                 <tr>
-                    <td>Plant Name</td>
-                    <td>Plant Type</td>
-                    <td>Plant Height</td>
-                    <td>Plant Width</td>
-                    <td>Plant Health Condition</td>
-                    <td>Plant Problem(s)</td>
-                    <td>Problem Description</td>
-                    <td>Exchange Preferences</td>
-                    <td>Post Date</td>
-                    <td>Description</td>
+                    <th scope="col">Plant Name</th>
+                    <th scope="col">Plant Type</th>
+                    <th scope="col">Plant Height</th>
+                    <th scope="col">Plant Width</th>
+                    <th scope="col">Plant Health Condition</th>
+                    <th scope="col">Plant Problem(s)</th>
+                    <th scope="col">Problem Description</th>
+                    <th scope="col">Exchange Preferences</th>
+                    <th scope="col">Post Date</th>
+                    <th scope="col">Description</th>
                 </tr>
             </thead>
             <tbody id=infoTableBody>
