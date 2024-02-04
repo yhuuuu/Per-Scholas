@@ -14,13 +14,17 @@
 </head>
 
 <body>
-    <h1>Plant Exchange</h1>
-    <hr>
-    <nav>
-        <a href="#">Swap List</a>
-        <a href="./problem.html">Plant Diagnose List</a>
-    </nav>
-    <hr>
+    <h1>Plant Swap</h1>
+
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="./index.html">Swap List</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./problem.html">Plant Diagnose List</a>
+        </li>
+    </ul>
+
 
     <div class="form-container">
 
@@ -61,7 +65,7 @@
 
 
             <!-- Plant Conditions-->
-            <fieldset>
+            <fieldset >
                 <label class="form-label">Plant Health Condition: </label>
 
                 <div class="form-check form-check-inline">
@@ -130,9 +134,8 @@
             </fieldset>
 
             <!-- Exchange Preferences -->
-
-            <label class="form-label"> Exchange Preferences: </label>
             <div>
+                <label class="form-label"> Exchange Preferences: </label>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input option" id="option1" name="option1" value="Ship">
                     <label class="form-check-label" for="option1">
@@ -150,7 +153,7 @@
             </div>
 
             <!-- Addtional Commons  -->
-            <label class="form-label" for="pdes">Description: </label>
+            <label class="form-label " for="pdes">Description: </label>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Enter description here" id="pdes" name="pdes"
                     style="height: 100px"></textarea>
@@ -165,7 +168,7 @@
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit" id="addBtn">Add to Swap List</button>
                 <!-- <input class="btn btn-primary" type="reset" value="Reset"> -->
-                <button class = "btn btn-secondary" type="button" id="resetBtn">Reset</button>
+                <button class="btn btn-secondary" type="button" id="resetBtn">Reset</button>
 
             </div>
 

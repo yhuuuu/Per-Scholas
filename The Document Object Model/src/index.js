@@ -1,14 +1,16 @@
 // First find the element from html
 const addBtn = document.getElementById("addBtn");
 const resetBtn = document.getElementById("resetBtn")
-const plantNameInput = document.getElementById("pname")
-const plantTypeSelect = document.getElementById("ptype")
+const plantNameInput = document.querySelector(".form-container>form>div:first-child input");
+const plantTypeSelect = document.getElementById("ptype");
 const pheight = document.getElementById("pheight");
 const pwidth = document.getElementById("pwidth");
 const conditionCheckBoxes = document.querySelectorAll(".condition");
 const pproblem = document.querySelectorAll(".problem");
 const preferenceCheckBoxs = document.querySelectorAll(".option");
 const postDate = document.getElementById("pdate");
+
+const a = document.querySelector(".form-container>form>div:first-child input");
 const swapListContainer = document.getElementsByClassName("swaplist-container")[0];
 const additonalBox = document.getElementById("additionalContent")
 const problemDesBox = document.getElementById('problem_des')
@@ -63,6 +65,7 @@ function handleAddButton(event) {
     // Log the plant object to check if values are captured correctly
     console.log(plantsArray);
 
+
     /**
      * Creating a new row (<tr>) and appending it to an HTML table. 
      * infoTableBody: <tbody> element 
@@ -107,6 +110,7 @@ function handleProblemChange(buttonValue) {
     // if no --> box hid. return value only
     additonalBox.style.display = (buttonValue === 'yes') ? 'block' : 'none';
 
+
     return selectedValue
 }
 //Get selected plant problem anwser 
@@ -114,6 +118,9 @@ function getSelectedRadioValue(radioButtons) {
 
     for (const radioButton of radioButtons) {
         if (radioButton.checked) {
+            if (radioButton.value === 'no'){
+                problemDesBox.value = ''
+            }
             return radioButton.value;
         }
     }
