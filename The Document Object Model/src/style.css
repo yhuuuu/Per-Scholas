@@ -1,9 +1,9 @@
-body {
+ body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
     margin: 0;
     padding: 0;
-}
+ }
 
 .form-container {
     max-width: 1000px;
@@ -14,14 +14,14 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
+/* form {
     display: grid;
     gap: 3px;
-}
+} */
 
-label {
+/* label {
     margin-bottom: 2px;
-}
+} */
 
 /* input[type="text"],
 select {
@@ -33,7 +33,7 @@ select {
     margin-top: 3px;
 } */
 
-button {
+/* button {
     background-color: #4caf50;
     color: #fff;
     padding: 5px 12px;
@@ -48,7 +48,7 @@ button:hover {
 
 .swaplist-container {
     margin-top: 10px;
-    /* Decreased margin */
+    
 }
 
 table {
@@ -60,4 +60,4 @@ td {
     height: 100px;
     line-height: 30px;
     border: 1px solid black;
-}
+}  */

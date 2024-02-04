@@ -12,7 +12,9 @@
         crossorigin="anonymous"></script>
 
     <style>
-
+        #tabs>div>div:not(.active) {
+            display: none;
+        }
     </style>
 </head>
 
@@ -21,7 +23,7 @@
     <div id="tabs">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-id="stretching" aria-current="page" href="#">Stretching</a>
+                <a class="nav-link active" data-id="Stretching" aria-current="page" href="#">Stretching</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-id="Curling-Leaves" href="#">Curling Leaves</a>
@@ -33,80 +35,126 @@
                 <a class="nav-link" data-id="Yellow-Leaves" href="#">Yellow Leaves</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-id="Dropping-Leaves"href="#">Dropping Leaves</a>
+                <a class="nav-link" data-id="Dropping-Leaves" href="#">Dropping Leaves</a>
             </li>
         </ul>
 
         <!-- Description -->
         <div>
-            <div id="stretching">
-                <h2>Solution:</h2>
-                If your houseplant problem is that it's started getting leggy and awkwardly tall or is sending out
-                spindly, weak stems reaching toward a light source, it's trying to tell you that it needs more
-                light. Move it closer to a window or switch it to another window that gets more light. South-facing
-                windows are the brightest, north-facing windows offer the least light, and east and west windows fall
-                somewhere in between. And rotate your plants so that all sides of the plant get equal access to the sun
-                and prevent the houseplant problem of lopsided growth.
+            <div id="Stretching" class="active">
+                <h4>Solution:</h4>
+                <p>
+                    If your houseplant problem is that it's started getting leggy and awkwardly tall or is sending out
+                    spindly, weak stems reaching toward a light source, it's trying to tell you that it needs more
+                    light. Move it closer to a window or switch it to another window that gets more light. South-facing
+                    windows are the brightest, north-facing windows offer the least light, and east and west windows
+                    fall
+                    somewhere in between. And rotate your plants so that all sides of the plant get equal access to the
+                    sun
+                    and prevent the houseplant problem of lopsided growth.
 
+                </p>
             </div>
             <div id="Curling-Leaves">
-                <h2>Solution:</h2>
-                Unusual growth patterns are a common sign of disease or insect presence. If you see curling or distorted
-                leaves, look closer—you may find other signs of insects or the insects themselves. If you find black
-                spots or fuzzy white spots, it's probably a disease. Use your fingers to crush pests or treat your plant
-                with neem oil. If your plant has a disease, remove affected areas to prevent further spread.
+                <h4>Solution:</h4>
+                <p>Unusual growth patterns are a common sign of disease or insect presence. If you see curling or
+                    distorted
+                    leaves, look closer—you may find other signs of insects or the insects themselves. If you find black
+                    spots or fuzzy white spots, it's probably a disease. Use your fingers to crush pests or treat your
+                    plant
+                    with neem oil. If your plant has a disease, remove affected areas to prevent further spread.</p>
             </div>
             <div id="Brown-Tips">
-                <h2>Solution:</h2>
-                If your houseplant problem is brown tips on its leaves, it may be signaling one of the following issues:
-                <h4>Inconsistent watering:</h4>
-                Be sure to only water when a plant needs it. And even if your plant can tolerate less frequent watering,
-                try not to go weeks without watering and randomly surprise it with a well-intentioned deluge. When you
-                water, make sure water runs out of the drainage holes so you know it's not sitting in the pot or only
-                reaching the top part of the plant.
-                <h4>Too much salt:</h4>
+                <h4>Solution:</h4>
+                <p>If your houseplant problem is brown tips on its leaves, it may be signaling one of the following
+                    issues:</p>
+
+                <br>
+                <h5>Inconsistent watering:</h5>
+                <p>Be sure to only water when a plant needs it. And even if your plant can tolerate less frequent
+                    watering,
+                    try not to go weeks without watering and randomly surprise it with a well-intentioned deluge. When
+                    you
+                    water, make sure water runs out of the drainage holes so you know it's not sitting in the pot or
+                    only
+                    reaching the top part of the plant.</p>
+
+                <h5>Too much salt:</h5>
                 This can happen from overfertilizing or salts from treated tap water. Flush the soil with water until it
                 drains clear, or repot your plant into fresh potting mix. Then, go easy on the fertilizer and try
                 watering it with distilled water.
-                <h4>Low humidity:</h4>
+                <h5>Low humidity:</h5>
                 Many houseplants are tropical natives. Place a humidifier nearby if the air in your house or apartment
                 is dry.
             </div>
             <div id="Yellow-Leaves">
-
-                If your plant only has one or two yellow leaves, it's probably not serious—pluck them off, and your
-                plant
-                should be good to go. An excessive amount of yellow leaves, however, could be a sign of a more
-                significant
-                issue. Overwatering kills houseplants just as often as (if not more than) underwatering. Although exact
-                needs vary by plant, a good rule of thumb is to water when the soil feels dry about 1/2 to 1 inch down.
-                And
-                most houseplants shouldn't sit in water because constantly wet soil leads to root rot. To avoid this
-                problem, only use containers with drainage holes and empty water from saucers beneath them.
+                <h4>Solution:</h4>
+                <p>If your plant only has one or two yellow leaves, it's probably not serious—pluck them off, and your
+                    plant
+                    should be good to go. An excessive amount of yellow leaves, however, could be a sign of a more
+                    significant
+                    issue. Overwatering kills houseplants just as often as (if not more than) underwatering. Although
+                    exact
+                    needs vary by plant, a good rule of thumb is to water when the soil feels dry about 1/2 to 1 inch
+                    down.
+                    And
+                    most houseplants shouldn't sit in water because constantly wet soil leads to root rot. To avoid this
+                    problem, only use conta</p>
+                iners with drainage holes and empty water from saucers beneath them.
             </div>
             <div id="Dropping-Leaves">
-                <h2>Solution:</h2>
-                Are you constantly having to pick up leaves from the floor when you walk by your plant? Some plants,
-                such as ficus, are sensitive to a change in location and show it by dropping leaves. As long as the
-                growing conditions in the new spot are still ideal, it should grow fresh leaves after it settles in. If
-                you haven't moved your plant recently, leaf drop may also indicate low light.
+                <h4>Solution:</h4>
+                <p>Are you constantly having to pick up leaves from the floor when you walk by your plant? Some plants,
+                    such as ficus, are sensitive to a change in location and show it by dropping leaves. As long as the
+                    growing conditions in the new spot are still ideal, it should grow fresh leaves after it settles in.
+                    If
+                    you haven't moved your plant recently, leaf drop may also indicate low light.</p>
+
             </div>
         </div>
     </div>
 
     <script>
 
-        //Get all the <a> tab
+        //tabs =>get all the nav-item's <a> element from nav
         const tabs = document.querySelectorAll("#tabs> ul > li > a");
-        //Each tag has event listener event
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t=>t.classList.remove('active'))
-                tab.classList.add('active')            
+        // each tab from tabs have a "click" event
+        tabs.forEach((tab) => {
+            //eveytime click =>run function to remove active class from each tab
+            tab.addEventListener('click', function () {
+                tabs.forEach((t) => t.classList.remove("active"))
+
+                //after remove the active class from each tab, add active class to current tab
+                this.classList.add("active")
+
+                //store the current tab id name
+                const id = this.dataset.id
+                //get the description element by current tab id name
+                const currentTabDesBox = document.getElementById(id)
+
+                //get all des box element by currentDesBox's parent's child
+                const allDesBoxes = currentTabDesBox.parentElement.children
+
+                //getElementby__ does not supper for each
+                for (box of allDesBoxes) {
+                    box.classList.remove('active')
+                }
+                // show the box 
+                currentTabDesBox.classList.add('active')
+
+
             });
         });
 
 
+
+        //     //get each clicked tab id name
+        //     const id = tab.dataset.id
+        //     //get all elements for tab
+        //     const tabid = document.getElementById(id)
+
+        //     console.log(tabid);
+        // //for (const x of rabid)
     </script>
 </body>
 
