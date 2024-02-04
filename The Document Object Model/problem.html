@@ -101,7 +101,8 @@
         //Each tag has event listener event
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                console.log('click');
+                tabs.forEach(t=>t.classList.remove('active'))
+                tab.classList.add('active')            
             });
         });
 
