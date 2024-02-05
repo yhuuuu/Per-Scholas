@@ -10,7 +10,6 @@ const pproblem = document.querySelectorAll(".problem");
 const preferenceCheckBoxs = document.querySelectorAll(".option");
 const postDate = document.getElementById("pdate");
 
-const a = document.querySelector(".form-container>form>div:first-child input");
 const swapListContainer = document.getElementsByClassName("swaplist-container")[0];
 const additonalBox = document.getElementById("additionalContent")
 const problemDesBox = document.getElementById('problem_des')
@@ -63,7 +62,7 @@ function handleAddButton(event) {
     plantsArray.push(plant);
 
     // Log the plant object to check if values are captured correctly
-    console.log(plantsArray);
+    console.log(plantNameValue);
 
 
     /**
@@ -79,12 +78,19 @@ function handleAddButton(event) {
         // checks if the property being iterated over is a direct property of the object itself
         if (plant.hasOwnProperty(property)) {
             //creates a new table cell (<td>) and assigns it to the variable cell
-            const cell = newRow.insertCell();
+            const newCell = document.createElement('td')
+            //const cell = newRow.insertCell();
+
             //sets the content of the newly created cell to the value of the current property of the plant object being iterated over
-            cell.innerHTML = plant[property];
+            //cell.innerHTML = plant[property];
+            newCell.innerHTML = plant[property]
+            // console.log(cell);
+            newRow.appendChild(newCell);
+
         }
     }
 }
+
 
 
 //Get all conditoins that is checked and store in a array
@@ -118,7 +124,7 @@ function getSelectedRadioValue(radioButtons) {
 
     for (const radioButton of radioButtons) {
         if (radioButton.checked) {
-            if (radioButton.value === 'no'){
+            if (radioButton.value === 'no') {
                 problemDesBox.value = ''
             }
             return radioButton.value;
@@ -137,14 +143,6 @@ function getExhangePreference(preferenceCheckBoxs) {
     return selectedExchangePerference
 }
 
-
-//helper function for reset button event
-function handleRestButton(plant) {
-    plant.forEach(element => {
-        element = ""
-    });
-
-}
 
 // Helper function for reset button event
 function handleRestButton(form, plants) {
@@ -168,10 +166,9 @@ function handleRestButton(form, plants) {
 //Create a message window
 // /https://github.com/MaxArt2501/share-this/issues/17
 function problemBtn() {
-
     const width = 700;
     const height = 500;
-    const left = screen.availLeft + (screen.availWidth - width) /2;
+    const left = screen.availLeft + (screen.availWidth - width) / 2;
     const top = screen.availTop + (screen.availHeight - height) / 2;
     window.open('./problem.html', 'mywin', `width=${width},height=${height},left=${left},top=${top}`);
 

@@ -127,7 +127,11 @@
                 </p>
             </div>
         </div>
+
+        <button type="button "class="btn btn-light" id="closeBtn">Close</button>
     </div>
+
+
 
     <script>
 
@@ -161,6 +165,8 @@
             });
         });
 
+        const closeBtn = document.getElementById('closeBtn')
+        closeBtn.addEventListener('click',()=>window.close())
     </script>
 </body>
 
