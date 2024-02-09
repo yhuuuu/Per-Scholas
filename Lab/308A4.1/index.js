@@ -80,19 +80,19 @@ const API_KEY = "live_SEFMavtXbAGcLwJphkxhXOIzBzOUudV2AyWi28qPJiayq0jKQUNVweZxHc
 
 
 
-// function displayCatBreedDes(catDes) {
-//   //clear the existing description before adding the new one
-//   infoDump.innerHTML = ''
+function displayCatBreedDes(catDes) {
+  //clear the existing description before adding the new one
+  infoDump.innerHTML = ''
 
-//   // create an h1 element for "Cat Description:"
-//   const catDesHeading = document.createElement('h2')
-//   catDesHeading.textContent = "Cat Description:"
-//   infoDump.appendChild(catDesHeading)
+  // create an h1 element for "Cat Description:"
+  const catDesHeading = document.createElement('h2')
+  catDesHeading.textContent = "Cat Description:"
+  infoDump.appendChild(catDesHeading)
 
-//   const catBreedDesEle = document.createElement('span')
-//   catBreedDesEle.textContent = catDes
-//   infoDump.appendChild(catBreedDesEle);
-// }
+  const catBreedDesEle = document.createElement('span')
+  catBreedDesEle.textContent = catDes
+  infoDump.appendChild(catBreedDesEle);
+}
 
 // initialLoad()
 
@@ -110,36 +110,58 @@ const API_KEY = "live_SEFMavtXbAGcLwJphkxhXOIzBzOUudV2AyWi28qPJiayq0jKQUNVweZxHc
  *   by setting a default header with your API key so that you do not have to
  *   send it manually with all of your requests! You can also set a default base URL!
  */
+// Set config defaults when creating the instance
+
+axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
+axios.defaults.headers.common['x-rapidapi-key'] = API_KEY;
+
 
 const fetchQuotes = async () => {
   try {
-
-    const response = await axios.get(
-      `https://api.thecatapi.com/v1/breeds`,
-      {
-        headers: {
-          'x-rapidapi-key': API_KEY
-        }
-      }
-    );
+    const response = await axios.get('/breeds');
     const data = response.data;
+
     data.forEach((breed) => {
       const option = document.createElement("option");
       option.value = breed.id;
       option.text = breed.name;
       breedSelect.appendChild(option);
-    })
+    });
 
-    return response.data
   } catch (error) {
     console.log('Erroe fetching quotes:', error);
-
     throw error;
   }
-
-
 }
 
+breedSelect.addEventListener('change', fetchCatImage)
+
+async function fetchCatImage(event) {
+
+  const id = event.target.value
+  Carousel.clear()
+
+  try {
+    const response = await axios.get(`/images/search?limit=10&breed_ids=${id}&api_key=${API_KEY}`);
+
+    const data = await response.data
+    console.log(`cat dataset:`, data);
+
+
+    //get url for each cat
+    data.forEach(cat => {
+      const eachCat = Carousel.createCarouselItem(cat.url, "cat", cat.id)
+      console.log('eachcat:', eachCat);
+      Carousel.appendCarousel(eachCat)
+    });
+
+    displayCatBreedDes(data[0].breeds[0].description)
+  }
+  catch (error) {
+    console.log('Error fetching cat images', error);
+    throw error
+  }
+}
 fetchQuotes()
 
 
@@ -152,6 +174,9 @@ fetchQuotes()
  * - Add a console.log statement to indicate when requests begin.
  * - As an added challenge, try to do this on your own without referencing the lesson material.
  */
+
+
+
 
 /**
  * 6. Next, we'll create a progress bar to indicate the request is in progress.
