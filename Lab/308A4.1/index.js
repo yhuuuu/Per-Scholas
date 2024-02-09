@@ -22,19 +22,20 @@ const API_KEY = "live_SEFMavtXbAGcLwJphkxhXOIzBzOUudV2AyWi28qPJiayq0jKQUNVweZxHc
  * This function should execute immediately.
  */
 
-async function initialLoad() {
-  const response = await fetch("https://api.thecatapi.com/v1/breeds");
-  const data = await response.json();
-  //console.log(data);
-  data.forEach((breed) => {
-    const option = document.createElement("option");
-    option.value = breed.id;
-    option.text = breed.name;
-    breedSelect.appendChild(option);
-  });
+// async function initialLoad() {
+//   const response = await fetch("https://api.thecatapi.com/v1/breeds");
+//   const data = await response.json();
+//   //console.log(data);
 
-}
-initialLoad()
+//   data.forEach((breed) => {
+//     const option = document.createElement("option");
+//     option.value = breed.id;
+//     option.text = breed.name;
+//     breedSelect.appendChild(option);
+//   });
+
+// }
+
 
 
 /**
@@ -52,53 +53,55 @@ initialLoad()
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
 
-breedSelect.addEventListener('change', selectedCat)
+// breedSelect.addEventListener('change', selectedCat)
 
-async function selectedCat(event) {
+// async function selectedCat(event) {
 
-  const id = event.target.value
-  console.log(`catid:`,id);
+//   const id = event.target.value
+//   console.log(`catid:`,id);
 
-  //Clear the carousel before fetching and appending new items
-  Carousel.clear()
+//   //Clear the carousel before fetching and appending new items
+//   Carousel.clear()
 
-  //Fetching data
-  const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${id}&api_key=${API_KEY}`);
-  const data = await response.json()
-  console.log(`cat dataset:`,data);
-  
-  //get url for each cat
-  data.forEach(cat => {
-    const eachCat = Carousel.createCarouselItem(cat.url, "cat", cat.id)
-    console.log('eachcat:',eachCat);
-    Carousel.appendCarousel(eachCat)  
-  });
+//   //Fetching data
+//   const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${id}&api_key=${API_KEY}`);
+//   const data = await response.json()
+//   console.log(`cat dataset:`,data);
 
-  displayCatBreedDes(data[0].breeds[0].description)
-}
+//   //get url for each cat
+//   data.forEach(cat => {
+//     const eachCat = Carousel.createCarouselItem(cat.url, "cat", cat.id)
+//     console.log('eachcat:',eachCat);
+//     Carousel.appendCarousel(eachCat)  
+//   });
 
-
-
-function displayCatBreedDes(catDes) {
-  //clear the existing description before adding the new one
-  infoDump.innerHTML = ''
-
-  // create an h1 element for "Cat Description:"
-  const catDesHeading = document.createElement('h2')
-  catDesHeading.textContent = "Cat Description:"
-  infoDump.appendChild(catDesHeading)
-
-  const catBreedDesEle = document.createElement('span')
-  catBreedDesEle.textContent = catDes
-  infoDump.appendChild(catBreedDesEle);
-}
+//   displayCatBreedDes(data[0].breeds[0].description)
+// }
 
 
+
+// function displayCatBreedDes(catDes) {
+//   //clear the existing description before adding the new one
+//   infoDump.innerHTML = ''
+
+//   // create an h1 element for "Cat Description:"
+//   const catDesHeading = document.createElement('h2')
+//   catDesHeading.textContent = "Cat Description:"
+//   infoDump.appendChild(catDesHeading)
+
+//   const catBreedDesEle = document.createElement('span')
+//   catBreedDesEle.textContent = catDes
+//   infoDump.appendChild(catBreedDesEle);
+// }
+
+// initialLoad()
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
  */
+
 /**
+ * 
  * 4. Change all of your fetch() functions to axios!
  * - axios has already been imported for you within index.js.
  * - If you've done everything correctly up to this point, this should be simple.
@@ -107,6 +110,42 @@ function displayCatBreedDes(catDes) {
  *   by setting a default header with your API key so that you do not have to
  *   send it manually with all of your requests! You can also set a default base URL!
  */
+
+const fetchQuotes = async () => {
+  try {
+
+    const response = await axios.get(
+      `https://api.thecatapi.com/v1/breeds`,
+      {
+        headers: {
+          'x-rapidapi-key': API_KEY
+        }
+      }
+    );
+    const data = response.data;
+    data.forEach((breed) => {
+      const option = document.createElement("option");
+      option.value = breed.id;
+      option.text = breed.name;
+      breedSelect.appendChild(option);
+    })
+
+    return response.data
+  } catch (error) {
+    console.log('Erroe fetching quotes:', error);
+
+    throw error;
+  }
+
+
+}
+
+fetchQuotes()
+
+
+
+
+
 /**
  * 5. Add axios interceptors to log the time between request and response to the console.
  * - Hint: you already have access to code that does this!
