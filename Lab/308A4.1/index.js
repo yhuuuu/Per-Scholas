@@ -34,7 +34,7 @@ async function initialLoad() {
   });
 
 }
-
+initialLoad()
 
 
 /**
@@ -51,26 +51,46 @@ async function initialLoad() {
  * - Each new selection should clear, re-populate, and restart the Carousel.
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
-initialLoad()
+
 breedSelect.addEventListener('change', selectedCat)
 
 async function selectedCat(event) {
 
   const id = event.target.value
+  console.log(`catid:`,id);
+
+  //Clear the carousel before fetching and appending new items
+  Carousel.clear()
+
+  //Fetching data
   const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${id}&api_key=${API_KEY}`);
   const data = await response.json()
+  console.log(`cat dataset:`,data);
   
+  //get url for each cat
   data.forEach(cat => {
     const eachCat = Carousel.createCarouselItem(cat.url, "cat", cat.id)
+    console.log('eachcat:',eachCat);
     Carousel.appendCarousel(eachCat)  
   });
-  console.log(data);
+
+  displayCatBreedDes(data[0].breeds[0].description)
 }
-//displayCatBreedName(data[0].breeds[0].description)
-function displayCatBreedName(catDes) {
-  const catBreedNameEle = document.createElement('span')
-  catBreedNameEle.textContent = catDes
-  infoDump.appendChild(catBreedNameEle);
+
+
+
+function displayCatBreedDes(catDes) {
+  //clear the existing description before adding the new one
+  infoDump.innerHTML = ''
+
+  // create an h1 element for "Cat Description:"
+  const catDesHeading = document.createElement('h2')
+  catDesHeading.textContent = "Cat Description:"
+  infoDump.appendChild(catDesHeading)
+
+  const catBreedDesEle = document.createElement('span')
+  catBreedDesEle.textContent = catDes
+  infoDump.appendChild(catBreedDesEle);
 }
 
 
