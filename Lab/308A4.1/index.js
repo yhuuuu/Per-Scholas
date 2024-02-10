@@ -172,10 +172,20 @@ fetchQuotes()
  */
 
 
-//request interceptor
+// request interceptor
 axios.interceptors.request.use(request => {
   request.metadata = request.metadata || {};
   request.metadata.startTime = new Date().getTime();
+
+  //set the body element' cursor style to "progress"
+  document.body.style.cursor = 'progress';
+
+  //Reset the progress bar to 0%
+  progressBar.style.width = '0%';
+
+  // Pass the updateProgress function to the onDownloadProgress config option
+  request.onDownloadProgress = updateProgress;
+
   return request;
 });
 
@@ -189,6 +199,10 @@ axios.interceptors.response.use(
 
     // Log the response data
     console.log('Response data:', response.data);
+
+    // Remove the progress cursor style from the body
+    document.body.style.cursor = 'default';
+
     return response;
 
   },
@@ -206,8 +220,11 @@ axios.interceptors.response.use(
  *  - You need only to modify its "width" style property to align with the request progress.
  * - In your request interceptor, set the width of the progressBar cat to 0%.
  *  - This is to reset the progress with each request.
+ * 
  * - Research the axios onDownloadProgress config option.
+ * 
  * - Create a function "updateProgress" that receives a ProgressEvent object.
+ * 
  *  - Pass this function to the axios onDownloadProgress config option in your event handler.
  * - console.log your ProgressEvent object within updateProgess, and familiarize yourself with its structure.
  *  - Update the progress of the request using the properties you are given.
@@ -216,6 +233,18 @@ axios.interceptors.response.use(
  *   with for future projects.
  */
 
+// Function to update progress
+const updateProgress = (progressEvent) => {
+  // Log the ProgressEvent object to understand its structure
+  console.log('ProgressEvent:', progressEvent);
+
+  // Calculate the progress percentage
+  const progress = (progressEvent.loaded / progressEvent.total) * 100;
+
+  // Log the progress percentage
+  console.log('Progress:', progress);
+
+};
 
 
 
@@ -225,7 +254,10 @@ axios.interceptors.response.use(
  * - In your request interceptor, set the body cat's cursor style to "progress."
  * - In your response interceptor, remove the progress cursor style from the body cat.
  */
+
+
 /**
+ * 
  * 8. To practice posting data, we'll create a system to "favourite" certain images.
  * - The skeleton of this function has already been created for you.
  * - This function is used within Carousel.js to add the event listener as items are created.
