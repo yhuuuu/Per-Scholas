@@ -113,7 +113,7 @@ function displayCatBreedDes(catDes) {
 // Set config defaults when creating the instance
 
 axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
-axios.defaults.headers.common['x-rapidapi-key'] = API_KEY;
+axios.defaults.headers.common['x-api-key'] = API_KEY;
 
 
 const fetchQuotes = async () => {
@@ -160,8 +160,10 @@ async function fetchCatImage(event) {
     console.log('Error fetching cat images', error);
     throw error
   }
+  Carousel.start()
 }
 fetchQuotes()
+
 
 
 /**
@@ -181,7 +183,8 @@ axios.interceptors.request.use(request => {
   document.body.style.cursor = 'progress';
 
   //Reset the progress bar to 0%
-  progressBar.style.width = '0%';
+  progressBar.style.width = '0%'
+
 
   // Pass the updateProgress function to the onDownloadProgress config option
   request.onDownloadProgress = updateProgress;
@@ -198,7 +201,7 @@ axios.interceptors.response.use(
     console.log(`Request took ${response.config.metadata.durationInMS} milliseconds.`)
 
     // Log the response data
-    console.log('Response data:', response.data);
+    //console.log('Response data:', response.data);
 
     // Remove the progress cursor style from the body
     document.body.style.cursor = 'default';
@@ -236,13 +239,13 @@ axios.interceptors.response.use(
 // Function to update progress
 const updateProgress = (progressEvent) => {
   // Log the ProgressEvent object to understand its structure
-  console.log('ProgressEvent:', progressEvent);
+  //console.log('ProgressEvent:', progressEvent);
 
   // Calculate the progress percentage
   const progress = (progressEvent.loaded / progressEvent.total) * 100;
 
   // Log the progress percentage
-  console.log('Progress:', progress);
+  //console.log('Progress:', progress);
 
 };
 
@@ -253,7 +256,7 @@ const updateProgress = (progressEvent) => {
  * 7. As a final cat of progress indication, add the following to your axios interceptors:
  * - In your request interceptor, set the body cat's cursor style to "progress."
  * - In your response interceptor, remove the progress cursor style from the body cat.
- * --Done
+ * ----Done-----
  */
 
 
@@ -272,32 +275,56 @@ const updateProgress = (progressEvent) => {
  *   you delete that favourite using the API, giving this function "toggle" functionality.
  * - You can call this function by clicking on the heart at the top right of any image.
  */
+
 export async function favourite(imgId) {
-  // your code here
-  try {
-    var requestBody = JSON.stringify({
-      "image_id": imgId,
-      //"sub_id":"user-123"
-    });
 
-    const response = await axios.post(
-      "https://api.thecatapi.com/v1/favourites",
-      requestBody,
-      {
-        headers: {
-          'x-api-key': API_KEY,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
+//   try {
 
-    return response.data;
+//     //Check if the image is already favorited
+//     const existingFavorites = await axios.get(`/favourites?image_id=${imgId}`,
+//       {
+//         headers: {
+//           'x-api-key': API_KEY
+//         }
+//       }
+      
+//     )
+  //   //if the image is already favorited, deleted the favorite
+  //   if (existingFavorites.data.length > 0) {
+  //     const response = await axios.delete(`/favourites/${existingFavorites.data[0].id}`,
+  //       {
+  //         headers: {
+  //           'x-api-key': API_KEY
+  //         }
+  //       });
+  //     console.log('Favorite deleted:', response.data);
+  //     return response.data;
 
-  } catch (error) {
-    // Handle errors
-    console.error('Error adding image to favorites:', error);
-    throw error;
-  }
+  //   }
+
+  //   //if the image is not favorited, add it to the favorties
+
+  //   const response = await axios.post(`/favourites`, {
+  //     "image_id": imgId
+  //     //"sub_id":"user-123"
+  //   }, {
+  //     headers: {
+  //       'x-api-key': API_KEY,
+  //       'Content-Type': 'application/json'
+  //     }
+  //   });
+
+
+  //   console.log('Favorite added:', response.data);
+
+  //   return response.data;
+
+
+  // } catch (error) {
+  //   // Handle errors
+  //   console.error('Error adding image to favorites:', error);
+  //   throw error;
+  // }
 }
 
 /**
@@ -309,6 +336,48 @@ export async function favourite(imgId) {
  *    If that isn't in its own function, maybe it should be so you don't have to
  *    repeat yourself in this section.
  */
+
+// export async function getFavourites() {
+//   try {
+//     // Fetch all favorites from the API
+//     const response = await axios.get('/favourites', {
+//       headers: {
+//         'x-api-key': API_KEY
+//       }
+//     });
+
+//     // Extract the list of favorite image IDs
+//     const favoriteImageIds = response.data.map(favorite => favorite.image_id);
+
+//     // Clear the carousel
+//     Carousel.clear();
+
+//     // Display favorites in the carousel
+//     favoriteImageIds.forEach(async imgId => {
+//       try {
+//         // Get image details by ID using the existing favourite() function
+//         const imageDetails = await favourite(imgId);
+
+//         // Create carousel item and append to carousel
+//         const carouselItem = Carousel.createCarouselItem(imageDetails.url, "cat", imgId);
+//         Carousel.appendCarousel(carouselItem);
+//       } catch (error) {
+//         console.error('Error getting image details:', error);
+//       }
+//     });
+//   } catch (error) {
+//     console.error('Error fetching favorites:', error);
+//   }
+// }
+
+// // Bind click event listener to the "Get Favorites" button
+// getFavouritesBtn.addEventListener('click', async () => {
+//   // Call getFavourites() function to fetch and display favorite cat images
+//   await getFavourites();
+
+// });
+
+
 
 /**
  * 10. Test your site, thoroughly!
