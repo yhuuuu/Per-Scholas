@@ -145,13 +145,12 @@ async function fetchCatImage(event) {
     const response = await axios.get(`/images/search?limit=10&breed_ids=${id}&api_key=${API_KEY}`);
 
     const data = await response.data
-    console.log(`cat dataset:`, data);
-
+    //console.log(`cat dataset:`, data);
 
     //get url for each cat
     data.forEach(cat => {
       const eachCat = Carousel.createCarouselItem(cat.url, "cat", cat.id)
-      console.log('eachcat:', eachCat);
+      //console.log('eachcat:', eachCat);
       Carousel.appendCarousel(eachCat)
     });
 
@@ -165,9 +164,6 @@ async function fetchCatImage(event) {
 fetchQuotes()
 
 
-
-
-
 /**
  * 5. Add axios interceptors to log the time between request and response to the console.
  * - Hint: you already have access to code that does this!
@@ -176,7 +172,33 @@ fetchQuotes()
  */
 
 
+//request interceptor
+axios.interceptors.request.use(request => {
+  request.metadata = request.metadata || {};
+  request.metadata.startTime = new Date().getTime();
+  return request;
+});
 
+//response interceptor
+axios.interceptors.response.use(
+  (response) => {
+    response.config.metadata.endTime = new Date().getTime();
+    response.config.metadata.durationInMS = response.config.metadata.endTime - response.config.metadata.startTime;
+
+    console.log(`Request took ${response.config.metadata.durationInMS} milliseconds.`)
+
+    // Log the response data
+    console.log('Response data:', response.data);
+    return response;
+
+  },
+  (error) => {
+    error.config.metadata.endTime = new Date().getTime();
+    error.config.metadata.durationInMS = error.config.metadata.endTime - error.config.metadata.startTime;
+
+    console.log(`Request took ${error.config.metadata.durationInMS} milliseconds.`)
+    throw error;
+  });
 
 /**
  * 6. Next, we'll create a progress bar to indicate the request is in progress.
@@ -193,6 +215,10 @@ fetchQuotes()
  *   once or twice per request to this API. This is still a concept worth familiarizing yourself
  *   with for future projects.
  */
+
+
+
+
 
 /**
  * 7. As a final cat of progress indication, add the following to your axios interceptors:
