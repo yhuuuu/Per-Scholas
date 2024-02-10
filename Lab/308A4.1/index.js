@@ -253,6 +253,7 @@ const updateProgress = (progressEvent) => {
  * 7. As a final cat of progress indication, add the following to your axios interceptors:
  * - In your request interceptor, set the body cat's cursor style to "progress."
  * - In your response interceptor, remove the progress cursor style from the body cat.
+ * --Done
  */
 
 
@@ -262,14 +263,41 @@ const updateProgress = (progressEvent) => {
  * - The skeleton of this function has already been created for you.
  * - This function is used within Carousel.js to add the event listener as items are created.
  *  - This is why we use the export keyword for this function.
+ * 
  * - Post to the cat API's favourites endpoint with the given ID.
  * - The API documentation gives examples of this functionality using fetch(); use Axios!
+ * 
+ * 
  * - Add additional logic to this function such that if the image is already favourited,
  *   you delete that favourite using the API, giving this function "toggle" functionality.
  * - You can call this function by clicking on the heart at the top right of any image.
  */
 export async function favourite(imgId) {
   // your code here
+  try {
+    var requestBody = JSON.stringify({
+      "image_id": imgId,
+      //"sub_id":"user-123"
+    });
+
+    const response = await axios.post(
+      "https://api.thecatapi.com/v1/favourites",
+      requestBody,
+      {
+        headers: {
+          'x-api-key': API_KEY,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    return response.data;
+
+  } catch (error) {
+    // Handle errors
+    console.error('Error adding image to favorites:', error);
+    throw error;
+  }
 }
 
 /**
