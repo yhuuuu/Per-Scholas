@@ -303,6 +303,7 @@ export async function favourite(imgId) {
  // display all favorites item
  export async function getFavourites() {
   axios.get('/favourites').then((response) =>{
+    infoDump.remove();
     Carousel.clear();
     for (const fav of response.data) {
       console.log('favoriteItems', response.data);
