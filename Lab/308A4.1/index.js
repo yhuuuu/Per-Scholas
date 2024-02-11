@@ -277,54 +277,16 @@ const updateProgress = (progressEvent) => {
  */
 
 export async function favourite(imgId) {
+  const favouritesInfo = (await axios.get('/favourites', { params: { image_id: imgId } })).data;
 
-//   try {
-
-//     //Check if the image is already favorited
-//     const existingFavorites = await axios.get(`/favourites?image_id=${imgId}`,
-//       {
-//         headers: {
-//           'x-api-key': API_KEY
-//         }
-//       }
-      
-//     )
-  //   //if the image is already favorited, deleted the favorite
-  //   if (existingFavorites.data.length > 0) {
-  //     const response = await axios.delete(`/favourites/${existingFavorites.data[0].id}`,
-  //       {
-  //         headers: {
-  //           'x-api-key': API_KEY
-  //         }
-  //       });
-  //     console.log('Favorite deleted:', response.data);
-  //     return response.data;
-
-  //   }
-
-  //   //if the image is not favorited, add it to the favorties
-
-  //   const response = await axios.post(`/favourites`, {
-  //     "image_id": imgId
-  //     //"sub_id":"user-123"
-  //   }, {
-  //     headers: {
-  //       'x-api-key': API_KEY,
-  //       'Content-Type': 'application/json'
-  //     }
-  //   });
-
-
-  //   console.log('Favorite added:', response.data);
-
-  //   return response.data;
-
-
-  // } catch (error) {
-  //   // Handle errors
-  //   console.error('Error adding image to favorites:', error);
-  //   throw error;
-  // }
+  if (favouritesInfo.length == 0) {
+    console.log(`Image ${imgId} has not been favourited before. Favouriting it...`);
+    await axios.post('/favourites', { "image_id": imgId, });
+  } else {
+    console.log(`Image ${imgId} was favourited before. Deleting the favourite...`)
+    await axios.delete(`/favourites/${favouritesInfo[0].id}`);
+  }
+ 
 }
 
 /**
@@ -336,6 +298,34 @@ export async function favourite(imgId) {
  *    If that isn't in its own function, maybe it should be so you don't have to
  *    repeat yourself in this section.
  */
+
+
+ // display all favorites item
+ export async function getFavourites() {
+  axios.get('/favourites').then((response) =>{
+    Carousel.clear();
+    for (const fav of response.data) {
+      console.log('favoriteItems', response.data);
+
+      Carousel.appendCarousel(
+        Carousel.createCarouselItem(fav.image.url, `id: ${fav.image.id}`, fav.image.id)
+      );
+    }
+  })
+
+  // const response = await axios.get('/favourites')
+  // console.log(`Got ${response.data.length} favourites`);
+  // for (const fav of response.data) {
+  //   Carousel.appendCarousel(
+  //     Carousel.createCarouselItem(fav.image.url, `id: ${fav.image.id}`, fav.image.id)
+  //   );
+  // }
+}
+
+getFavouritesBtn.addEventListener('click', async () => {
+  // Call getFavourites() function to fetch and display favorite cat images
+  await getFavourites();
+})
 
 // export async function getFavourites() {
 //   try {
