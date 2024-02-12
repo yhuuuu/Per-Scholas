@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disney</title>
     <link rel="stylesheet" href="style.css">
-   
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
 
 </head>
 
@@ -14,9 +17,11 @@
     <h1>Disney Characters</h1>
     <div id="disney-character-container"></div>
 
-    <div id="pagination-container"></div>
+    <div id="pagination-container">
+        <button type="button" id="prePgBtn">Pervious page</button>
+        <button type="button" id="nextPgBtn">Next page</button>
+    </div>
 
-   
     <script src="index.js"></script>
 </body>
 
