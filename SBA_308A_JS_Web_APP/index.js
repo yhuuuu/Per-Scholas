@@ -1,62 +1,47 @@
 
+const dogsSelectBox= document.getElementById('dog_breed_select');
+const dogSearchBtn = document.getElementById('dog_breed_select_btn')
 
-const characterBox = document.getElementById('disney-character-container');
-const perPageBtn = document.getElementById('prePgBtn')
-const nextPageBtn = document.getElementById('nextPgBtn')
+const API_KEY = `live_6olo9RBewaIncUjmWKJFmPBas3EtGEQI3bU5nFZtdtXP0JuhZsN6f9PUXyq8sekg`
 
-
-async function initialLoad() {
-    try {
-        const response = await fetch(`https://api.disneyapi.dev/character`);
-
-        const characters = await response.json();
-        //console.log(characters);
-
-        characters.data.forEach((character) => {
-            // Check if character data contains imageUrl property
-            if (character.imageUrl) {
-                const characterCard = document.createElement('img');
-                characterCard.src = character.imageUrl;
-                characterCard.alt = character.name;
-                characterBox.appendChild(characterCard);
-            }
-
-        });
-       
-    } catch (error) {
-        console.error('Error fetching and displaying characters:', error);
-    }
-    //Update pagination controls
-
-}
-
-initialLoad()
+axios.defaults.baseURL = 'https://api.thedogapi.com/v1';
+axios.defaults.headers.common['x-api-key'] = API_KEY;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 
+async function displayDog() {
+    //get dog list
+    const allDogsInfo = await axios.get(`/breeds`)
+    const data = allDogsInfo.data;
+    //console.log(data);
 
-async function handelNextPage(charactersPageData) {
-
-    const nextPageUrl = charactersPageData.nextPage
-    const response = await axios.get(`${nextPageUrl}`)
-    const nextPageCharacters = response.data;
-    // Clear existing characters from the container
-    characterBox.innerHTML = '';
-    nextPageCharacters.data.forEach((character) => {
-        // Check if character data contains imageUrl property
-        if (character.imageUrl) {
-            const characterCard = document.createElement('img');
-            characterCard.src = character.imageUrl;
-            characterCard.alt = character.name;
-            characterBox.appendChild(characterCard);
-        }
-
-    });
+   //appent to the dogsSelectBox
+   data.forEach(breed => {
     
-    // if (nextPageCharacters.info.nextPage){
-    //     await handelNextPage(nextPageCharacters.info)
-    // }
+    const option = document.createElement('option')
+    
+    //let the value = breed_id
+    option.value = breed.id
+    option.text = breed.name
+   // console.log(option);
+   dogsSelectBox.appendChild(option)
+   });
 
 
 }
 
-nextPageBtn.addEventListener('click', handelNextPage)
+displayDog()
+
+dogSearchBtn.addEventListener('click',async()=>{
+    const breedType = dogsSelectBox.value
+    console.log('show img for',breedType);
+    // const dogImg = document.createElement('img')
+})
+
+
+// async function fetchImg(){
+//     const imgUrl = await axios.get(`v1/images/:image_id${img_id}?`)
+
+// }
+
+
