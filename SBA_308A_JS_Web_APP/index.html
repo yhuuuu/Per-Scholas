@@ -6,23 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dogs</title>
     <link rel="stylesheet" href="style.css">
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ 
+  
 </head>
 
 <body>
     <h1>Find Your Perfect Pet</h1>
-    <nav> 
+    <nav>
         <a href="search.html">Search Dogs</a>
         <a href="fav.html">Favorite List</a>
     </nav>
 
-    <div id="random_img_container"></div>
+    <div>
+        <button id ="refresh_btn">refresh</button>
+        <div id = "random_img_container">
 
-    
-   
+        </div>
+    </div>
+
+
+    <script type="module" src="random.js"></script>
+ 
 </body>
 
 </html>

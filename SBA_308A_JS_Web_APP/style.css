@@ -1,11 +1,14 @@
-
-img{
-    width: 500px;
-    height: auto;
+img {
+    width: 400px;
+    height: 400px;
 }
 
 button.addToFav {
-    background-color: #4CAF50; 
+    position: relative;
+    /* Set a non-static position */
+    z-index: 2;
+    /* Higher than the default stacking order of the image */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -15,4 +18,25 @@ button.addToFav {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-  }
+}
+
+#random_img_container img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+
+}
+
+#random_img_container {
+    display: flex;
+
+
+}
+
+.dog_cards_container {
+    display: flex;
+    /* Use flexbox for child divs */
+    flex-wrap: wrap;
+
+
+}
