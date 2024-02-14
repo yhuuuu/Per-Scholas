@@ -3,7 +3,7 @@ import * as Favorite from "./fav.js";
 const refreshBtn = document.getElementById('refresh_btn')
 const randomImgBox = document.getElementById('random_img_container')
 const dogCardContainer = document.createElement('div')
-
+const loadingIndicator = document.getElementById('loading-indicator');
 
 const API_KEY = `live_6olo9RBewaIncUjmWKJFmPBas3EtGEQI3bU5nFZtdtXP0JuhZsN6f9PUXyq8sekg`
 
@@ -15,11 +15,13 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 //Function for randomly populate dog img and user and fav the img
 async function displayRadomImg() {
 
+    loadingIndicator.style.display = 'block';
+
     const response = await axios.get(`images/search?limit=20`)
     const data = response.data
     console.log(data);
 
-    
+
     data.forEach(randomDog => {
 
         const randomDogUrl = randomDog.url
@@ -50,23 +52,22 @@ async function displayRadomImg() {
         randomImgBox.appendChild(dogCardContainer)
 
         favBtn.addEventListener('click', () => {
-            //favorite(randomDogImgID)
             Favorite.favorite(randomDogImgID)
-            //console.log(randomDogImgID);
+
         })
 
 
     });
-
+    loadingIndicator.style.display = 'none';
 
 }
 
 displayRadomImg()
 
 
-refreshBtn.addEventListener('click',async()=>{
+refreshBtn.addEventListener('click', async () => {
     dogCardContainer.innerHTML = '';
     await displayRadomImg()
-    
+
     console.log('refreshed');
 })

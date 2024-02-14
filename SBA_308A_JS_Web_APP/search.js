@@ -32,19 +32,44 @@ async function displayDog() {
 
 
 // Function to display all dog breeds in the select box and set up event listener for button click
-async function setUpDogApp() {
+// async function setUpDogApp() {
 
-    // display all dog breeds in the select ox
-    await displayDog();
+//     // display all dog breeds in the select ox
+//     await displayDog();
 
 
-    // add event listener for button click to fetch images
-    dogSearchBtn.addEventListener('click', async (event) => {
-        event.preventDefault();
-        //fetch image for the select breed
-        await fetchImg(dogsSelectBox.value)
-    })
+//     // add event listener for button click to fetch images
+//     dogSearchBtn.addEventListener('click', async (event) => {
+//         event.preventDefault();
+//         //fetch image for the select breed
+//         await fetchImg(dogsSelectBox.value)
+//     })
 
+// }
+
+
+function setUpDogApp() {
+    return new Promise((resolve, reject) => {
+        // Display all dog breeds in the select box
+        displayDog()
+            .then(() => {
+                // Add event listener for button click to fetch images
+                dogSearchBtn.addEventListener('click', async (event) => {
+                    event.preventDefault();
+                    try {
+                        // Fetch images for the selected breed
+                        await fetchImg(dogsSelectBox.value);
+                        resolve(); // Resolve the promise once images are fetched
+                    } catch (error) {
+                        reject(error); // Reject the promise if there's an error
+                    }
+                });
+                resolve(); // Resolve the promise once dog breeds are displayed and event listener is added
+            })
+            .catch(error => {
+                reject(error); // Reject the promise if there's an error while displaying dog breeds
+            });
+    });
 }
 
 
@@ -58,9 +83,6 @@ async function fetchImg(dogsBreed) {
 
     //ferch imges for the selected dog breed by breed id
     const dogImgList = await axios.get(`images/search?limit=10&breed_ids=${dogsBreed}`)
-
-    //display images of the selected dog breed
-    // console.log( dogImgList.data[0].id);
 
     const data = dogImgList.data
      console.log( data);
