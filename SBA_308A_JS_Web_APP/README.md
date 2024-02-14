@@ -28,11 +28,11 @@ Follow these steps to set up greenSprout locally:
 
 ```bash
 # Clone the assignment repository
-git clone git@github.com:yhuuuu/Per-Scholas.git
-
+git clone git github.com/yhuuuu/Per-Scholas/blob/SBA_308A
 
 # Navigate to the project directory
-cd SBA_308A/SBA_308A_JS_Web_APP
+cd Per-Scholas/SBA_308A/SBA_308A_JS_Web_APP
+
 
 # Open the index.html file in VScode with Live Saver
 install Live Saver extendtion in VScode
