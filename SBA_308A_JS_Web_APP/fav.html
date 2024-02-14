@@ -4,26 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Your Favorite List</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="fav.js"></script>
 
 </head>
 
 <body>
-    <div id="fav-container"> 
 
+    <h1>Dogs You Liked</h1>
+    <nav>
+        <a href="index.html">Dog List</a>
+        <a href="search.html">Dog Search</a>
+       
+    </nav>
+    
 
+    <div class="main">
+        <div id="fav-container">
 
-        
+        </div>
     </div>
+    
 </body>
-<script type="module" src="fav.js"></script>
-<!-- <script>
-    // Execute the getFavourites function when the page is loaded
-    window.onload = async () => {
-        await getFavourites();
-    };
-</script> -->
+
+
 
 </html>

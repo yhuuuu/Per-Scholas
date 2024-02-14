@@ -1,3 +1,4 @@
+import * as Favorite from "./fav.js";
 
 const dogsSelectBox = document.getElementById('dog_breed_select');
 const dogSearchBtn = document.getElementById('dog_breed_select_btn')
@@ -38,7 +39,7 @@ async function setUpDogApp() {
 
 
     // add event listener for button click to fetch images
-    dogSearchBtn.addEventListener('click', async(event) => {
+    dogSearchBtn.addEventListener('click', async (event) => {
         event.preventDefault();
         //fetch image for the select breed
         await fetchImg(dogsSelectBox.value)
@@ -56,21 +57,22 @@ async function fetchImg(dogsBreed) {
     dogImgBox.innerHTML = ''; // clear existing imges
 
     //ferch imges for the selected dog breed by breed id
-    const dogImgList = await axios.get(`images/search?breed_ids=${dogsBreed}`)
+    const dogImgList = await axios.get(`images/search?limit=10&breed_ids=${dogsBreed}`)
 
     //display images of the selected dog breed
-    dogImgList.data.forEach(element => {
+    // console.log( dogImgList.data[0].id);
 
+    const data = dogImgList.data
+     console.log( data);
+    data.forEach(dog => {
+
+        const dogImgUrl = dog.url
+    
         const dogImg = document.createElement('img')
-        dogImg.src = element.url
+        dogImg.src = dogImgUrl
+    
         dogImgBox.appendChild(dogImg)
-        
-        const favBtn = document.createElement('button')
-        favBtn.textContent = 'add to fav!'
-        dogImgBox.appendChild(favBtn)
-        favBtn.classList.add('addToFav'); // Add CSS class to the button
-
-
+    
     });
 
 

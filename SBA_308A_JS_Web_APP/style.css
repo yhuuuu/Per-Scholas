@@ -1,46 +1,143 @@
-img {
-    width: 400px;
-    height: 400px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-button.addToFav {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
     position: relative;
-    /* Set a non-static position */
-    z-index: 2;
-    /* Higher than the default stacking order of the image */
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+    height: 100vh;
+    width: 100%;
 }
 
-#random_img_container img {
+.dog_cards_container button {
+
+    position: absolute;
+    transform: translate(-100%, -0%);
+    z-index: 2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+
+}
+
+#random_img_container button {
+
+    background-color: #70b0f59a;
+}
+
+#fav-container button {
+
+    background-color: #f58f709a;
+}
+
+#random_img_container img,
+#fav-container img,
+#dogImg-container img {
     object-fit: cover;
+    position: relative;
     width: 300px;
     height: 300px;
+}
 
+.dog_cards_container , #dogImg-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+
+nav {
+    text-align: center;
+    margin: 50px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 10px;
+}
+
+
+#refresh_btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#refresh_btn:hover {
+    background-color: #0056b3;
 }
 
 #random_img_container {
-    display: flex;
-
-
+    text-align: center;
+    margin-top: 20px;
 }
 
-.dog_cards_container {
-    display: flex;
-    /* Use flexbox for child divs */
-    flex-wrap: wrap;
-
-
+.dog_cards_container ,#dogImg-container{
+    justify-content: center;
 }
 
-button.deletBtn{
+/* Search Box */
+#search-box {
+    display: flex;
+    justify-content: center;
+    margin: 60px;
     
+
 }
+
+#dog_breed_select_btn{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#dog_breed_select_btn:hover {
+    background-color: #0056b3;
+}
+
+#dog_breed_select {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+    appearance: none; /* Hide default dropdown arrow */
+  }
+
+  #dog_breed_select option {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Style for hovered option */
+  #dog_breed_select option:hover {
+    background-color: #f0f0f0;
+  }

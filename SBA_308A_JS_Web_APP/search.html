@@ -7,22 +7,32 @@
     <title>Dog Search</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="search.js"></script>
+
 </head>
 
 <body>
-    <div id="search box">
+    <h1>Search Dogs By Breed</h1>
+
+    <nav>
+        <a href="index.html">Dog List</a>
+        <a href="fav.html">Favorite List</a>
+    </nav>
+    
+    <div id="search-box">
         <form action="">
             <select name="dog_breed" id="dog_breed_select"></select>
             <button id="dog_breed_select_btn">Search</button>
         </form>
     </div>
 
-    <div id="dogImg-container">
+    <div class="main">
 
-    </div>
+        <div id="dogImg-container">
+
+        </div>
 
 
-    <script src="search.js"></script>
 
 </body>
 

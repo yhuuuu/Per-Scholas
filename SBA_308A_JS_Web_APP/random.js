@@ -36,7 +36,7 @@ async function displayRadomImg() {
 
         //Create the'add to fav' button element
         const favBtn = document.createElement('button')
-        favBtn.textContent = 'add to fav!'
+        favBtn.textContent = 'Add'
 
 
         // Append the image and button to the container div
@@ -52,7 +52,7 @@ async function displayRadomImg() {
         favBtn.addEventListener('click', () => {
             //favorite(randomDogImgID)
             Favorite.favorite(randomDogImgID)
-            console.log(randomDogImgID);
+            //console.log(randomDogImgID);
         })
 
 

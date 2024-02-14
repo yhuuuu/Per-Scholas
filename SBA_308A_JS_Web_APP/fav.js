@@ -25,7 +25,7 @@ export async function favorite(randomDogImgID) {
             await axios.delete(`/favourites/${data[0].id}`);
         }
 
-        console.log(`after fav check`, data);
+        //console.log(`after fav check`, data);
     } catch (error) {
         // Log the error message
         console.error('Error:', error.response.data);
@@ -54,7 +54,7 @@ export async function getFavourites() {
 
             //each image a add delete btn
             const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'delete from fav!';
+            deleteBtn.textContent = 'Delete';
             deleteBtn.classList.add('delFromFav');
 
             favCard.appendChild(favImgEl);
