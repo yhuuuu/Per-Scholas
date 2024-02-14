@@ -78,3 +78,4 @@ async function fetchImg(dogsBreed) {
 
 // Call the setupDogApp function to initialize the application
 setUpDogApp()
+
