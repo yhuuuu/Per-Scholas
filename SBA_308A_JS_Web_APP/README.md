@@ -42,6 +42,6 @@ Right click and select 'Open with Live Saver'
 ```
 ## ScreenShots
 
-![Fetch random images](/screenshots/img1.png)
-![Search by Breeds](/screenshots/img2.png)
-![Edit the Favorites List](/screenshots/img3.png)
+![Fetch random images](screenshots/img1.png)
+![Search by Breeds](screenshots/img2.png)
+![Edit the Favorites List](screenshots/img3.png)
