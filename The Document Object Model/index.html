@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Swap</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <h1>Plant Swap</h1>
+    <!-- 
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="./index.html">Swap List</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./problem.html">Plant Diagnose List</a>
+        </li>
+    </ul> -->
+
+
+    <div class="form-container">
+
+        <form id="swap-from" class="row">
+            <!-- Plant Name -->
+            <div class="row mb-3">
+                <label for="pname" class="col-sm-2 col-form-label">Plant Name: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="pname" name="pname" required>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="row mb-3">
+                <label for="pname" class="col-sm-2 col-form-label">Plant Name: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="pname" name="pname" required>
+                </div>
+            </div> -->
+
+            <!-- Plant Type -->
+            <div class="row mb-3">
+                <label for="ptype" class="col-sm-2 col-form-label"> Plant Type: </label>
+                <div class="col-sm-10">
+                    <select class="form-select" id="ptype" name="ptype" required>
+                        <option> Indoor Plant</option>
+                        <option> Outdoor Plant</option>
+                        <option> Seed</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!-- Plant Measurement -->
+            <div class="col-md-6">
+                <label for="pheight" class="form-label">Plant Height (inches): </label>
+                <input type="number" class="form-control" id="pheight" name="pheight" min="0" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="pwidth" class="form-label">Plant Width (inches): </label>
+                <input type="number" class="form-control" id="pwidth" name="pwidth" min="0"required>
+            </div>
+
+            <!-- Plant Conditions-->
+            <fieldset>
+                <label class="form-label">Plant Health Condition: </label>
+                <div> 
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input condition" id="condition1" name="condition1"
+                        value="Healthy" >
+                    <label for="condition1" class="form-check-label">
+                        Healthy
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input condition" id="condition2" name="condition2"
+                        value="Need more love">
+                    <label for="condition2" class="form-check-label">
+                        Need more love
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input condition" id="condition3" name="condition3"
+                        value="Sick">
+                    <label for="condition3" class="form-check-label">
+                        Sick
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input condition" id="condition4" name="condition4"
+                        value="Dying">
+                    <label for="condition4" class="form-check-label">
+                        Dying
+                    </label>
+                </div>
+
+            </div>
+            </fieldset>
+
+            <!-- Plant Problem -->
+            <fieldset>
+                <label class="form-label"> Do you notice any problem on your plant?</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input problem" type="radio" name="problem" id="has_problem" value="yes" re>
+                        <label for="has_problem">
+                            Yes
+                        </label>
+                    </div>
+    
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input problem" type="radio" name="problem" id="no_problem" value="no">
+                        <label for="no_problem">
+                            No
+                        </label>
+                    </div>
+    
+                    <!-- pop up windows for plant problems -->
+                    <button type="button" class="btn btn-primary" onclick="problemBtn()">
+                        Click Here to Help You Diagnose Plant Problems
+                    </button>
+                </div>
+                
+
+                <!-- Comment box -->
+                <div id="additionalContent" style="display: none;">
+                    <textarea class="form-control" placeholder="If Yes, please comment the problem here:"
+                        id="problem_des" name="problem_des"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Exchange Preferences -->
+            <div>
+                <label class="form-label"> Exchange Preferences: </label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input option" id="option1" name="option1" value="Ship">
+                    <label class="form-check-label" for="option1">
+                        Ship
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input option" id="option2" name="option2"
+                        value="In-person">
+                    <label class="form-check-label" for="option2">
+                        In-person
+                    </label>
+                </div>
+            </div>
+     
+            <!-- Addtional Commons  -->
+            <label class="form-label " for="pdes">Description: </label>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Enter description here" id="pdes" name="pdes"
+                    style="height: 100px">
+                </textarea>
+            </div>
+
+            <!-- Post Date -->
+            <label class="form-label" for="pdate">Post Date:
+                <input type="date" id="pdate" name="pdate">
+            </label>
+
+
+            
+            <!-- buttons -->
+
+            <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit" id="addBtn">Add to Swap List</button>
+            <!-- <input class="btn btn-primary" type="reset" value="Reset"> -->
+            <button class="btn btn-secondary" type="button" id="resetBtn">Reset</button>
+            </div>
+
+
+
+        </form>
+    </div>
+
+    <div class="swaplist-container">
+        <h1> Swap List</h1>
+        <table class="table table-striped" id="info-t">
+            <thead>
+                <tr>
+                    <th scope="col">Plant Name</th>
+                    <th scope="col">Plant Type</th>
+                    <th scope="col">Plant Height</th>
+                    <th scope="col">Plant Width</th>
+                    <th scope="col">Plant Health Condition</th>
+                    <th scope="col">Plant Problem(s)</th>
+                    <th scope="col">Problem Description</th>
+                    <th scope="col">Exchange Preferences</th>
+                    <th scope="col">Post Date</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody id=infoTableBody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./src/index.js"></script>
+
+</body>
+
+</html>
