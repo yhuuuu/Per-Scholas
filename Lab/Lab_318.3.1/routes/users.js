@@ -91,7 +91,7 @@ router
     const userId = req.params.id
 
     //By default, these parameters are always parsed as strings. This is because URLs are inherently strings, and Express.js doesn't perform any type coercion or conversion on route parameters.
-    console.log(typeof userId);
+    //console.log(typeof userId);
     // Finding all posts associated with the specified user ID
     const userPosts = posts.filter((post) => post.userId === parseInt(userId));
 
@@ -102,8 +102,15 @@ router
       return res.status(404).json({ error: "User not found" });
     }
 
+    const links = [
+      {
+        href: "users/:id/posts",
+        rel: ":id",
+        type: "GET",
+      },
+    ];
     // Return the posts associated with the user
-    res.json(userPosts)
+    res.json({ userPosts, links });
 
 
   })

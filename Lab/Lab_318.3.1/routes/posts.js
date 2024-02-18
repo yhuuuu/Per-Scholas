@@ -7,16 +7,45 @@ const error = require("../utilities/error");
 router
   .route("/")
   .get((req, res) => {
-    const links = [
-      {
-        href: "posts/:id",
-        rel: ":id",
-        type: "GET",
-      },
-    ];
+    const userId = req.query.userId;
 
-    res.json({ posts, links });
+    if (!userId) {
+      // If userId is not provided, return all posts
+
+      const links = [
+        {
+          href: "posts/:id",
+          rel: "post",
+          type: "GET",
+        },
+        {
+          href: "posts?userId=<VALUE>",
+          rel: ":user-posts",
+          type: "GET",
+        }
+      ];
+      res.json({posts,links});
+    } else {
+      // If userId is provided, filter posts by userId
+      const userPosts = posts.filter((post) => post.userId === parseInt(userId));
+  
+      if (userPosts.length === 0) {
+        return res.status(404).json({ error: "User posts not found" });
+      }
+  
+      const links = [
+        {
+          href: "posts/:id",
+          rel: ":post",
+          type: "GET",
+        },
+      ];
+  
+      res.json({ userPosts, links });
+    }
   })
+
+
   .post((req, res, next) => {
     if (req.body.userId && req.body.title && req.body.content) {
       const post = {
@@ -76,5 +105,7 @@ router
     if (post) res.json(post);
     else next();
   });
+
+
 
 module.exports = router;
