@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const users = require("../data/users");
+const posts = require("../data/posts")
 const error = require("../utilities/error");
 
 router
@@ -81,4 +82,29 @@ router
     else next();
   });
 
+router
+  .route("/:id/posts")
+  .get((req, res) => {
+    // console.log(posts);
+
+    // Extracting the user ID from the request parameters
+    const userId = req.params.id
+
+    //By default, these parameters are always parsed as strings. This is because URLs are inherently strings, and Express.js doesn't perform any type coercion or conversion on route parameters.
+    console.log(typeof userId);
+    // Finding all posts associated with the specified user ID
+    const userPosts = posts.filter((post) => post.userId === parseInt(userId));
+
+
+    //if user is  not found, return 404 NOT FOUND
+
+    if (userPosts.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Return the posts associated with the user
+    res.json(userPosts)
+
+
+  })
 module.exports = router;
