@@ -24,15 +24,15 @@ router
           type: "GET",
         }
       ];
-      res.json({posts,links});
+      res.json({ posts, links });
     } else {
       // If userId is provided, filter posts by userId
       const userPosts = posts.filter((post) => post.userId === parseInt(userId));
-  
+
       if (userPosts.length === 0) {
         return res.status(404).json({ error: "User posts not found" });
       }
-  
+
       const links = [
         {
           href: "posts/:id",
@@ -40,7 +40,7 @@ router
           type: "GET",
         },
       ];
-  
+
       res.json({ userPosts, links });
     }
   })
