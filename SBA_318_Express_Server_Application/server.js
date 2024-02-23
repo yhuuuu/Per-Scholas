@@ -2,7 +2,7 @@
 const exprss = require("express")
 const bodyParser = require("body-parser")
 
-const plants = require("./routes/plants")
+const users = require("./routes/users")
 const plantInfo = require("./routes/plantInfo")
 const swapInfo = require("./routes/swapInfo")
 
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 })
 //Routes Setup:
 
-app.use("/api/plants", plants)
+app.use("/api/users", users)
 app.use("/api/plantInfo", plantInfo)
 app.use("/api/swapInfo", swapInfo)
 
