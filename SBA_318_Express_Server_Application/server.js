@@ -38,9 +38,9 @@ app.use((req, res, next) => {
         console.log(`${JSON.stringify(req.body)}`);
     }
     //next() function is called to pass control to the next middleware function in the stack. This is important to ensure that the request continues to be processed by subsequent middleware and eventually reaches the appropriate route handler.
-    else {
-        next()
-    }
+
+    next()
+
 })
 //Routes Setup:
 
@@ -68,7 +68,11 @@ app.get('/', (req, res) => {
 //     next(error(404, "Resource Not Found"));
 // });
 
-// Middleware #4 - Error Handling
+// app.use((err, req, res, next) => {
+//     res.status(err.status || 500);
+//     res.json({ error: err.message });
+// });
+//Middleware #4 - Error Handling
 app.use((err, req, res, next) => {
     if (err.status === 404) {
         res.status(404).json({ error: 'Resource Not Found' })

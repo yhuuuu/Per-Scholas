@@ -5,36 +5,35 @@ const users = require("../data/users")
 const error = require('../utilities/error');
 
 
-router
-    .route('/')
+router.route('/')
     .get((req, res) => {
         const links = [
             {
-                href: 'users/:id',
-                rel: 'id',
+                href: '/users/:user_id',
+                rel: ':user_id',
                 type: 'GET',
             }
-        ]
-        res.json({ users, links })
+        ];
+        res.json({ users, links });
     })
-
     .post((req, res, next) => {
         if (req.body.username && req.body.email) {
-            if (users.find((u) => u.username == req.body.username)) {
-                next(error(409, "Username Already Taken"));
+            console.log('HI');
+            if (users.find(u => u.username === req.body.username)) {
+                return next(error(409, "Username Already Taken"));
             }
 
-            const user = {
-                id: users[users.length - 1].id + 1,
-                name: req.body.name,
+            const newUser = {
+                user_id: users.length > 0 ? users[users.length - 1].user_id + 1 : 1,
                 username: req.body.username,
                 email: req.body.email,
             };
 
-            users.push(user);
-            res.json(users[users.length - 1]);
-        } else next(error(400, "Insufficient Data"));
+            users.push(newUser);
+            res.status(201).json(newUser);
+        } else {
+            return next(error(400, "Insufficient Data"));
+        }
     });
-
 
 module.exports = router;
