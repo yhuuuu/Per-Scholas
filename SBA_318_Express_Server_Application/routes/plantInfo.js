@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const plants = require("../data/plants")
+const plantInfo = require("../data/plantInfo")
 const error = require('../utilities/error');
 
 
@@ -10,12 +10,12 @@ router
 .get((req,res)=>{
     const links = [
         {
-            href:'plants/:id',
+            href:'plantInfo/:id',
             rel:'id',
             type:'GET',
         }
     ]
-    res.json({plants, links})
+    res.json({plantInfo, links})
 })
 
 module.exports = router;

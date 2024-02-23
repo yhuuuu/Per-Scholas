@@ -19,5 +19,7 @@ const plants = [
     "plant_id": 5,
     "plant_name": "Spider Plant"
   }
-  // Add more plant entries as needed
-]
+
+];
+
+module.exports = plants;

@@ -1,4 +1,4 @@
-const plantInfos = [
+const plantInfo = [
   {
     "info_id": 1,
     "plant_id": 1,
@@ -40,3 +40,5 @@ const plantInfos = [
     "description": "This Spider Plant was purchased from a local market. It's been thriving in a hanging basket near a sunny window. It's easy to care for and produces baby spider plants regularly."
   }
 ]
+
+module.exports = plantInfo;

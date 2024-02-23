@@ -3,7 +3,7 @@ const exprss = require("express")
 const bodyParser = require("body-parser")
 
 const plants = require("./routes/plants")
-const plantInfo = require("./routes/plantsInfo")
+const plantInfo = require("./routes/plantInfo")
 const swapInfo = require("./routes/swapInfo")
 
 const error = require("./utilities/error")
@@ -43,10 +43,14 @@ app.use((req, res, next) => {
     }
 })
 //Routes Setup:
-// use routes
-// app.use("/api/plants")
-// app.use("/api/plantInfo")
-// app.use("/api/swapInfo")
+
+app.use("/api/plants", plants)
+app.use("/api/plantInfo", plantInfo)
+app.use("/api/swapInfo", swapInfo)
+
+app.get("/", (req, res) => {
+    res.send("Work in progress!");
+});
 
 //HATEOAS Links for get "/"
 app.get('/', (req, res) => {
@@ -59,15 +63,20 @@ app.get('/', (req, res) => {
     })
 })
 
-// Middleware #4 - 404 Handler
-app.use((req, res, next) => {
-    next(error(404, "Resource Not Found"));
-});
+// // Middleware #4 - 404 Handler
+// app.use((req, res, next) => {
+//     next(error(404, "Resource Not Found"));
+// });
 
-// Middleware #5 - Error Handling
+// Middleware #4 - Error Handling
 app.use((err, req, res, next) => {
-    res.status(err.status || 500)
-    res.json({ error: err.message })
+    if (err.status === 404) {
+        res.status(404).json({ error: 'Resource Not Found' })
+    }
+    else {
+        res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' })
+    }
+
 })
 //Server Start 
 app.listen(PORT, () => {
