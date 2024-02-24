@@ -68,9 +68,19 @@ app.get("/", (req, res) => {
                 type: "GET",
             },
             {
+                href: "/plantInfo",
+                rel: "plantInfo",
+                type: "POST",
+            },
+            {
                 href: "/swapInfo",
                 rel: "swapInfo",
                 type: "GET",
+            },
+            {
+                href: "/swapInfo",
+                rel: "swapInfo",
+                type: "POST",
             },
         ]
     })
