@@ -44,24 +44,41 @@ app.use((req, res, next) => {
 })
 //Routes Setup:
 
-app.use("/api/users", users)
-app.use("/api/plantInfo", plantInfo)
-app.use("/api/swapInfo", swapInfo)
-
-app.get("/", (req, res) => {
-    res.send("Work in progress!");
-});
+app.use("/users", users)
+app.use("/plantInfo", plantInfo)
+app.use("/swapInfo", swapInfo)
 
 //HATEOAS Links for get "/"
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.json({
-        links: [{
-            href: "/api",
-            rel: "api",
-            type: "GET"
-        }]
+        links: [
+            {
+                href: "/users",
+                rel: "uers",
+                type: "GET",
+            },
+            {
+                href: "/users",
+                rel: "uers",
+                type: "POST",
+            },
+            {
+                href: "/plantInfo",
+                rel: "plantInfo",
+                type: "GET",
+            },
+            {
+                href: "/swapInfo",
+                rel: "swapInfo",
+                type: "GET",
+            },
+        ]
     })
-})
+});
+
+
+
+
 
 // // Middleware #4 - 404 Handler
 // app.use((req, res, next) => {
