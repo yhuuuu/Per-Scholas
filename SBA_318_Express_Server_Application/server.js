@@ -1,6 +1,7 @@
 //Require Statements
-const exprss = require("express")
+const express = require("express")
 const bodyParser = require("body-parser")
+const path = require("path")
 
 const users = require("./routes/users")
 const plantInfo = require("./routes/plantInfo")
@@ -9,8 +10,12 @@ const swapInfo = require("./routes/swapInfo")
 const error = require("./utilities/error")
 
 //Setting Up Express Application:
-const app = exprss()
+const app = express()
 const PORT = 3000
+
+// Set EJS as the view engine
+app.set('view engine', 'ejs')
+app.set('views',path.join(__dirname,'views'))
 
 
 /** Middleware #1 - URL-Encoded Body Parsing
@@ -54,12 +59,12 @@ app.get("/", (req, res) => {
         links: [
             {
                 href: "/users",
-                rel: "uers",
+                rel: "users",
                 type: "GET",
             },
             {
                 href: "/users",
-                rel: "uers",
+                rel: "users",
                 type: "POST",
             },
             {
@@ -87,18 +92,6 @@ app.get("/", (req, res) => {
 });
 
 
-
-
-
-// // Middleware #4 - 404 Handler
-// app.use((req, res, next) => {
-//     next(error(404, "Resource Not Found"));
-// });
-
-// app.use((err, req, res, next) => {
-//     res.status(err.status || 500);
-//     res.json({ error: err.message });
-// });
 //Middleware #4 - Error Handling
 app.use((err, req, res, next) => {
     if (err.status === 404) {
