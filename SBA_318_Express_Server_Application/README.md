@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-- [Project Name](#project-name)
+  - [Project Name](#project-name)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
+  - [Features](#features)
   - [Technologies](#technologies-used)
-  - [Installation](#installation)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Endpoints](#endpoints)
@@ -33,15 +33,19 @@ Interact with the RESTful API through HTML forms.
 
 ## Installation
 
-1.Clone the repository: git clone <repository-url>
-2.Navigate to the project directory: cd <project-folder>
-3.Install dependencies: npm install
+1. Clone the repository: git clone <https://github.com/yhuuuu/Per-Scholas.git>
+
+2. Navigate to the project directory: cd <SBA_318_Express_Server_Application>
+
+3. Install dependencies: npm install
 
 ## Usage
 
-1.Start the server: npm start
-2.Access the API endpoints via HTTP requests.
-3.Use HTML forms to interact with the API.
+1. Start the server: npm start
+
+2. Access the API endpoints via HTTP requests.
+
+3. Use HTML forms to interact with the API.
 
 ## Endpoints
 * GET /users: Retrieve all users.
@@ -56,10 +60,6 @@ Interact with the RESTful API through HTML forms.
 * GET /swapInfo: Retrieve all swap information.
 * POST /swapInfo: Create a swap.
 * GET /userForm: create a new by submission
-
-
-
-
 
 ## Dependencies
 
