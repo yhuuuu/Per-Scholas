@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+
+    <title>User Info</title>
+</head>
+<body>
+    <h1>User Information</h1>
+    <h2>User Details</h2>
+    <p>User ID: <%= user.user_id %></p>
+    <p>Username: <%= user.username %></p>
+    <p>Email: <%= user.email %></p>
+
+    <h2>Plants Info</h2>
+    <% userPlants.forEach((plant) => { %>
+        <p>Plant ID: <%= plant.plant_id %></p>
+        <p>Plant Name: <%= plant.plant_name %></p>
+        
+    <% }); %>
+
+    <h2>Swaps Info</h2>
+    <% userSwaps.forEach((swap) => { %>
+        <p>Swap ID: <%= swap.swap_id %></p>
+       <p>Swap Description: <%= swap.swap_description %></p>
+       
+    <% }); %>
+
+</body>
+</html>

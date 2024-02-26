@@ -1,0 +1,90 @@
+
+#userForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the form labels */
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the input fields */
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Styling for the submit button */
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the feedback area */
+  #feedback {
+    margin-top: 20px;
+    color: #dc3545; /* Red color for error messages */
+  }
+
+  /* Styling for the user information */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* Styling for the user details */
+.user-details {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the plants and swaps info */
+.plants-info,
+.swaps-info {
+  margin-top: 20px;
+}
+
+/* Styling for individual plant and swap items */
+.plant-item,
+.swap-item {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
