@@ -15,7 +15,7 @@ const PORT = 3000
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs')
-app.set('views',path.join(__dirname,'views'))
+app.set('views', path.join(__dirname, 'views'))
 
 
 /** Middleware #1 - URL-Encoded Body Parsing
@@ -96,6 +96,8 @@ app.get("/", (req, res) => {
 app.get('/userForm', (req, res) => {
     res.render('userForm');
 });
+
+
 
 
 //Middleware #4 - Error Handling

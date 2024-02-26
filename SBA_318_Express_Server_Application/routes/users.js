@@ -117,6 +117,7 @@ router
 
 
     // Filter plantInfo and swapInfo based on the user ID
+    const user = users.find((user) => user.user_id === parseInt(user_id));
     const userPlants = plantInfo.filter((plant) => plant.user_id === parseInt(user_id));
     const userSwaps = swapInfo.filter((swap) => swap.user_id === parseInt(user_id));
 
@@ -136,7 +137,8 @@ router
     ];
     
     // Return the posts associated with the user
-    res.json({ userPlants,userSwaps, links });
+    //res.json({ userPlants,userSwaps, links });
+    res.render('userInfo', { user, userPlants, userSwaps });
   })
 
 module.exports = router;
