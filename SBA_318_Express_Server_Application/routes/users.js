@@ -36,6 +36,7 @@ router.route('/')
 
       const newUser = {
         user_id: users.length > 0 ? users[users.length - 1].user_id + 1 : 1,
+      
         username: req.body.username,
         email: req.body.email,
       };

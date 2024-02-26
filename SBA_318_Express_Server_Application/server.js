@@ -53,6 +53,7 @@ app.use("/users", users)
 app.use("/plantInfo", plantInfo)
 app.use("/swapInfo", swapInfo)
 
+
 //HATEOAS Links for get "/"
 app.get("/", (req, res) => {
     res.json({
@@ -89,6 +90,11 @@ app.get("/", (req, res) => {
             },
         ]
     })
+});
+
+
+app.get('/userForm', (req, res) => {
+    res.render('userForm');
 });
 
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+
+<body>
+    <h1>User Form</h1>
+    <form id="userForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <button type="submit">Create User</button>
+    </form>
+
+    <!-- Display area for feedback -->
+    <div id="feedback"></div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value
+            };
+
+
+            try {
+                const response = await fetch('/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // Display success message or handle response as needed
+                    document.getElementById('feedback').innerHTML = `<p>User created successfully!</p>`;
+                } else {
+                    // Handle non-200 response
+                    document.getElementById('feedback').innerHTML = `<p>Error: ${response.statusText}</p>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // Display error message
+                document.getElementById('feedback').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
