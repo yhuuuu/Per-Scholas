@@ -21,8 +21,6 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 
-
-
 /** Middleware #1 - URL-Encoded Body Parsing
  * Allow the parsing of URL-encoded data with richer data types beyond just strings.Which means can parse more complex data structures, such as nested objects and arrays, from the URL-encoded format.
  */
@@ -102,19 +100,17 @@ app.get('/userForm', (req, res) => {
     res.render('userForm');
 });
 
+// Middleware #4 - 404 Middleware
+app.use((req, res, next) => {
+    next(error(404, "Resource Not Found"));
+});
 
 
-
-//Middleware #4 - Error Handling
+//Middleware #5 - Error-handling middleware
 app.use((err, req, res, next) => {
-    if (err.status === 404) {
-        res.status(404).json({ error: 'Resource Not Found' })
-    }
-    else {
-        res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' })
-    }
-
-})
+    res.status(err.status || 500);
+    res.json({ error: err.message });
+});
 //Server Start 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

@@ -11,9 +11,9 @@ router.route('/')
   .get((req, res) => {
     const links = [
       {
-        href: '/users/:user_id',
-        rel: ':user_id',
-        type: 'GET',
+        href: "users/:user_id",
+        rel: ":id",
+        type: "GET",
       }
     ];
     res.json({ users, links });
@@ -73,7 +73,6 @@ router
       ];
 
       res.render('user', { user, links });
-      // if (user) res.json({ user, links });
     } else { next(); }
   })
 
@@ -110,8 +109,7 @@ router
   //get user's plant's and swap's info
   .route("/:user_id/info")
   .get((req, res) => {
-    // console.log(posts);
-
+    
     // Extracting the user ID from the request parameters
     const user_id = req.params.user_id
 
