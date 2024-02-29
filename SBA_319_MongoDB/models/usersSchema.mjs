@@ -1,0 +1,26 @@
+import mongoose from 'mongoose'
+
+// Define the schema
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true, // Username is required
+        unique: true, // Username must be unique
+    },
+    name: {
+        type: String,
+        required: true, // Name is required
+    },
+    email: {
+        type: String,
+        required: true, // Email is required
+        unique: true, // Email must be unique
+    },
+});
+
+// Create a model based on the schema
+export default mongoose.model('Users', userSchema);
+
+// const Users = mongoose.model('Users', userSchema);
+
+// module.exports = Users; // Export the model
