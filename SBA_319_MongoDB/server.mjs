@@ -2,14 +2,23 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+
 import Users from './models/usersSchema.mjs'
 import users from './utilities/usersData.js';
 
 import Plants from './models/plantsSchema.mjs'
 import plants from './utilities/plantsData.js'
 
-import Swaps from './models/swapSchema.mjs'
+import Swaps from './models/swapsSchema.mjs'
 import swaps from './utilities/swapData.js';
+
+//import route files
+import usersRoute from './routes/usersRoute.mjs'
+import plantsRoute from './routes/plantsRoute.mjs'
+import swapsRoute from './routes/swapsRoute.mjs'
+
+
+
 //Configurations
 //Loads the .env file and makes the environment variables defined in it available to your Node.js application.
 dotenv.config();  
@@ -37,6 +46,14 @@ app.use(express.json());
 
 //   res.send('Database seeded')
 // })
+
+//Use route files
+app.use(usersRoute)
+app.use(plantsRoute)
+app.use(swapsRoute)
+
+
+
 app.get('/', async (req,res) =>{
 res.send('Welcome')
 })

@@ -13,4 +13,4 @@ const plantSchema = new mongoose.Schema({
 })
 
 // Create a model based on the schema
-export default mongoose.model('Plant', plantSchema);
+export default mongoose.model('Plants', plantSchema);

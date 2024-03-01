@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const swapSchema = new mongoose.Schema({
+    
     plant_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref:'Plants',
