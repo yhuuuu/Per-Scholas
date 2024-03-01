@@ -3,8 +3,13 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import Users from './models/usersSchema.mjs'
-import users from './utilities/users.js';
+import users from './utilities/usersData.js';
 
+import Plants from './models/plantsSchema.mjs'
+import plants from './utilities/plantsData.js'
+
+import Swaps from './models/swapSchema.mjs'
+import swaps from './utilities/swapData.js';
 //Configurations
 //Loads the .env file and makes the environment variables defined in it available to your Node.js application.
 dotenv.config();  
@@ -17,12 +22,21 @@ app.use(express.json());
 
 //Routes
 //Seed Routes
-app.get('/seed',async (req,res)=>{
-  await Users.deleteMany({});
-  await Users.create(users)
+// app.get('/seed',async (req,res)=>{
+//   // Seed the Users collection
+//   await Users.deleteMany({});
+//   await Users.create(users)
 
-  res.send('Database seeded')
-})
+//   //Seed the Plant collection
+//   await Plants.deleteMany({});
+//   await Plants.create(plants)
+  
+//   //Seed the Swap collection
+//   await Swaps.deleteMany({});
+//   await Swaps.create(swaps)
+
+//   res.send('Database seeded')
+// })
 app.get('/', async (req,res) =>{
 res.send('Welcome')
 })
