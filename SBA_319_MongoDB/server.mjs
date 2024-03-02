@@ -21,7 +21,7 @@ import swapsRoute from './routes/swapsRoute.mjs'
 
 //Configurations
 //Loads the .env file and makes the environment variables defined in it available to your Node.js application.
-dotenv.config();  
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 await mongoose.connect(process.env.MONGO_URI);
@@ -39,7 +39,7 @@ app.use(express.json());
 //   //Seed the Plant collection
 //   await Plants.deleteMany({});
 //   await Plants.create(plants)
-  
+
 //   //Seed the Swap collection
 //   await Swaps.deleteMany({});
 //   await Swaps.create(swaps)
@@ -54,16 +54,22 @@ app.use(swapsRoute)
 
 
 
-app.get('/', async (req,res) =>{
-res.send('Welcome')
+app.get('/', async (req, res) => {
+  res.send('Welcome')
 })
+
+//404 Error Handler
+app.use((req, res, next) => {
+  res.status(404).send('Route not found')
+});
 
 //Error checking middleware
 app.use((err, _req, res, next) => {
-    res.status(500).send('Seems like we messed up somewhere...');
-  });
-  
-  //Listen
-  app.listen(PORT, () => {
-    console.log(`Server is listening on port: ${PORT}`);
-  });
+  res.status(500).send('Seems like we messed up somewhere...');
+});
+
+
+//Listen
+app.listen(PORT, () => {
+  console.log(`Server is listening on port: ${PORT}`);
+});
