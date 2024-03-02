@@ -12,5 +12,8 @@ const plantSchema = new mongoose.Schema({
     description: String
 })
 
+// Set up indexes
+plantSchema.index({ plant_name: 1 }, { unqiue: true })
+
 // Create a model based on the schema
 export default mongoose.model('Plants', plantSchema);

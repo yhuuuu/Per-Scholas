@@ -14,9 +14,9 @@ const swapSchema = new mongoose.Schema({
     availability: String,
     trade_preferences: String,
     swap_status:String
-
-
 })
+// Set up indexes
+swapSchema.index({ zipcode: 1 }, { unqiue: true })
 
 // Create a model based on the schema
 export default mongoose.model('Swaps', swapSchema);

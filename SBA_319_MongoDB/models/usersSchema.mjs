@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     },
 });
 
+// Set up indexes
+userSchema.index({ username: 1 }, { unqiue: true })
+userSchema.index({ email: 1 }, { unqiue: true })
+
 // Create a model based on the schema
 export default mongoose.model('Users', userSchema);
 
