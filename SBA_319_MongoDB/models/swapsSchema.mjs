@@ -7,6 +7,11 @@ const swapSchema = new mongoose.Schema({
         ref:'Plants',
         require:true
     },
+    user_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Users',
+        require:true
+    },
     swap_description: String,
     swap_method: String,
     location: String,
