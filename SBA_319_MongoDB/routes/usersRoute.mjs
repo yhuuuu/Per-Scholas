@@ -1,6 +1,9 @@
 import express from 'express';
 const router = express.Router()
 import Users from '../models/usersSchema.mjs'
+import Plants from '../models/plantsSchema.mjs'
+import mongoose from 'mongoose'
+
 
 
 //Define routes for users collection
@@ -13,7 +16,42 @@ router.get('/users', async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ msg: 'Server Error' })
-    }4
+    }
+})
+
+//Read user by id
+router.get('/users/:id', async (req, res) => {
+    try {
+        const user = await Users.findById(req.params.id)
+
+        if (!user) {
+            return res.status(404).json({ msg: 'User Not Found' })
+        }
+        res.send(user)
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: 'Server Error' })
+    }
+})
+
+//Read plants by user_id
+router.get('/users/:id/plants', async (req, res) => {
+    const ObjectId = mongoose.Types.ObjectId;
+    const userId = new ObjectId(req.params.id);
+
+
+    try {
+        const userPlants = await Plants.aggregate([
+            {
+                $match: { user_id: userId }
+            }
+        ]);
+        res.json(userPlants);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server Error' });
+    }
 })
 
 //Create
@@ -45,7 +83,7 @@ router.post('/users', async (req, res) => {
 
 //Update
 /* 
-   ex: http://localhost:3000/users/65e2c1d3b5ba484848707bf1
+   ex: http://localhost:3000/users/:id
    {
     "username": "amyLovesPlants",
     "name": "Amy Smith",
@@ -55,8 +93,8 @@ router.post('/users', async (req, res) => {
 router.put('/users/:id', async (req, res) => {
     try {
         const user = await Users.findById(req.params.id);
-        if(!user){
-            return res.status(404).json({msg: 'User Not Found'})
+        if (!user) {
+            return res.status(404).json({ msg: 'User Not Found' })
         }
 
         let updateUser = await Users.findByIdAndUpdate(
@@ -75,23 +113,23 @@ router.put('/users/:id', async (req, res) => {
 
 //Delete
 /**
- * ex:http://localhost:3000/users/65e2c1d3b5ba484848707bf1
+ * ex:http://localhost:3000/users/:id
  */
-router.delete('/users/:id', async (req,res)=>{
-    try{
+router.delete('/users/:id', async (req, res) => {
+    try {
         const user = await Users.findById(req.params.id);
-        if(!user){
-            return res.status(404).json({msg: 'User Not Found'})
+        if (!user) {
+            return res.status(404).json({ msg: 'User Not Found' })
         }
 
         await Users.findByIdAndDelete(req.params.id)
-        res.status(200).json({msg: `User deleted`})
+        res.status(200).json({ msg: `User deleted` })
     }
 
-    catch(err){
+    catch (err) {
         console.log(object);
-        res.status(500).json({msg: 'Server Error'})
-        
+        res.status(500).json({ msg: 'Server Error' })
+
     }
 })
 
