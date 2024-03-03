@@ -21,6 +21,8 @@ const swapSchema = new mongoose.Schema({
     swap_status:String
 })
 // Set up indexes
+swapSchema.index({ plant_id: 1 }, { unqiue: true })
+swapSchema.index({ user_id: 1 }, { unqiue: true })
 swapSchema.index({ zipcode: 1 }, { unqiue: true })
 
 // Create a model based on the schema
