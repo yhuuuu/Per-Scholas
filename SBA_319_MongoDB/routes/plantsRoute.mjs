@@ -15,6 +15,17 @@ router.get('/plants', async (req, res) => {
     }
 })
 
+//get plants by user_id
+router.get('/plants/user/:user_id', async (req, res) => {
+    try {
+        const userPlants = await Plants.find({user_id: req.params.user_id})
+        res.json(userPlants)
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server Error' });
+    }
+})
+
 
 
 export default router

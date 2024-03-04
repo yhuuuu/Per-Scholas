@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router()
 import Users from '../models/usersSchema.mjs'
 import Plants from '../models/plantsSchema.mjs'
+import Swaps from '../models/swapsSchema.mjs'
 import mongoose from 'mongoose'
 
 
@@ -35,25 +36,55 @@ router.get('/users/:id', async (req, res) => {
     }
 })
 
-//Read plants by user_id
+//Read plants info by user_id
 router.get('/users/:id/plants', async (req, res) => {
-    const ObjectId = mongoose.Types.ObjectId;
-    const userId = new ObjectId(req.params.id);
-
-
     try {
-        const userPlants = await Plants.aggregate([
-            {
-                $match: { user_id: userId }
-            }
-        ]);
-        res.json(userPlants);
+        const userPlants = await Plants.find({ user_id: req.params.id })
+        res.json(userPlants)
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: 'Server Error' })
+    }
+})
+//Read swaps info by user_id
+router.get('/users/:id/swaps', async (req, res) => {
+    try {
+        const userSwaps = await Swaps.find({ user_id: req.params.id })
+        res.json(userSwaps)
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: 'Server Error' })
+    }
+})
+
+//Read user plant and swap info
+
+router.get('/users/:id/info', async (req, res) => {
+    try {
+        // Find the user by ID
+        const user = await Users.findById(req.params.id);
+
+        // Find plants associated with the user
+        const userPlants = await Plants.find({ user_id: req.params.id });
+
+        // Find swaps associated with the user
+        const userSwaps = await Swaps.find({ user_id: req.params.id });
+
+        // Combine user, plants, and swaps data into a single response
+        const userInfo = {
+            user: user,
+            plants: userPlants,
+            swaps: userSwaps
+        };
+
+        res.json(userInfo);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server Error' });
     }
 })
-
 //Create
 /**
  {  
